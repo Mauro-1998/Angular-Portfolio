@@ -1,0 +1,9 @@
+<!-- .navbar -->
+<nav id="navbar" [ngClass]="iconMenu ? 'navbar navbar-mobile' : 'navbar'" >
+  <ul>
+    <li *ngFor="let e of navbarOptions">
+      <a [ngClass]="e.selected ? 'nav-link active' : 'nav-link'" (click)="changeSelected(e)" routerLink="{{e.value}}">{{e.titulo}}</a>
+    </li>
+  </ul>
+  <i [ngClass]="iconMenu ? 'bi mobile-nav-toggle bi-x' :  'bi mobile-nav-toggle bi-list'" (click)="changeIconMenu()"></i>
+</nav>
