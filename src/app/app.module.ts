@@ -12,6 +12,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutMeComponent } from './components/about/about-me/about-me.component';
 import { SkillsComponent } from './components/about/skills/skills.component';
 import { TestimonialsComponent } from './components/about/testimonials/testimonials.component';
+import {CarouselModule} from "primeng/carousel";
+import {ButtonModule} from "primeng/button";
+
 
 
 
@@ -30,7 +33,9 @@ import { TestimonialsComponent } from './components/about/testimonials/testimoni
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

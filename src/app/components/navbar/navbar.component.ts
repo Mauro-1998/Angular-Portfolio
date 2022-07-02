@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     {titulo:'Contacto',value:"contact",selected:false},
   ]
 
-  constructor(private header:HeaderComponent,private about:AboutComponent) { }
+  constructor(private header:HeaderComponent) { }
 
   ngOnInit(): void {
   }
