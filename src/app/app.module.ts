@@ -14,6 +14,10 @@ import { SkillsComponent } from './components/about/skills/skills.component';
 import { TestimonialsComponent } from './components/about/testimonials/testimonials.component';
 import {CarouselModule} from "primeng/carousel";
 import {ButtonModule} from "primeng/button";
+import { EducationComponent } from './components/resume/education/education.component';
+import { ExperienceComponent } from './components/resume/experience/experience.component';
+import { SummaryComponent } from './components/resume/summary/summary.component';
+import { CoursesComponent } from './components/resume/courses/courses.component';
 
 
 
@@ -30,6 +34,10 @@ import {ButtonModule} from "primeng/button";
     AboutMeComponent,
     SkillsComponent,
     TestimonialsComponent,
+    EducationComponent,
+    ExperienceComponent,
+    SummaryComponent,
+    CoursesComponent,
   ],
   imports: [
     BrowserModule,
