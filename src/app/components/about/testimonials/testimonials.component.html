@@ -5,30 +5,36 @@
     <h2>Referencias</h2>
   </div>
 
-  <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-    <div class="swiper-wrapper">
+  <p-carousel [value]="childs" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-testimonial pTemplate="item">
 
-      <p-carousel [value]="childs" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="20000" [responsiveOptions]="responsiveOptions">
-        <ng-template let-testimonial pTemplate="item">
-          <div class="testimonial-item">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              {{testimonial.content}}
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="{{testimonial.imageURL}}" class="testimonial-img" alt="">
-            <h3>{{testimonial.author}}</h3>
-            <h4>{{testimonial.position}}</h4>
-          </div>
-        </ng-template>
-      </p-carousel>
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
 
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
 
-  <div class="owl-carousel testimonials-carousel">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    {{testimonial.content}}
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img src="{{testimonial.imageURL}}" class="testimonial-img" alt="">
+                  <h3>{{testimonial.author}}</h3>
+                  <h4>{{testimonial.position}}</h4>
+                </div>
+              </div>
 
-  </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+
+      <div class="owl-carousel testimonials-carousel">
+
+      </div>
+    </ng-template>
+  </p-carousel>
 
 </div><!-- End Testimonials  -->

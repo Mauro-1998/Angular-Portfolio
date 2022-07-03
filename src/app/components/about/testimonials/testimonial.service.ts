@@ -29,8 +29,22 @@ export class TestimonialService {
       position:"Store Owner"
     }
 
+    const sujeto4: Testimonial = {
+      content:"Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.",
+      author:"Matt Brandon",
+      imageURL:"assets/img/testimonials/testimonials-4.jpg",
+      position:"Freelancer"
+    }
+
+    const sujeto5: Testimonial = {
+      content:"Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.",
+      author:"John Larson",
+      imageURL:"assets/img/testimonials/testimonials-5.jpg",
+      position:"Entrepreneur"
+    }
+
     console.log([sujeto1,sujeto2,sujeto3])
-    return [sujeto1,sujeto2,sujeto3]
+    return [sujeto1,sujeto2,sujeto3,sujeto4,sujeto5]
   }
 
 
