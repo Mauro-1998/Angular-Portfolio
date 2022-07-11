@@ -46,10 +46,6 @@ export class NavbarComponent implements OnInit {
     console.log("value: " + value)
     if(value !== ""){
       this.header.content = true
-      if(value === "about"){
-        console.log("ENTRA BIEN - NavbarComponent")
-        //this.about.changeClass()
-      }
     }else{
       this.header.content = false
     }

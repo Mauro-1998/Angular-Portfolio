@@ -9,9 +9,10 @@ export class HeaderComponent implements OnInit {
 
   content:boolean = false
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.content = false
   }
 
 }

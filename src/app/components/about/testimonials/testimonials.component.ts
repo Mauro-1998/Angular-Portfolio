@@ -20,11 +20,11 @@ export class TestimonialsComponent implements OnInit {
 
   constructor(private testimonialService: TestimonialService) {
     this.responsiveOptions = [
-      /*{
+      {
         breakpoint: '1024px',
         numVisible: 3,
         numScroll: 3
-      },*/
+      },
       {
         breakpoint: '992px',
         numVisible: 1,

@@ -65,3 +65,7 @@
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #18d26e;
 }
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator button {
+  background-color: #18d26e;
+}

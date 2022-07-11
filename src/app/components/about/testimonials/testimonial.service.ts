@@ -43,7 +43,6 @@ export class TestimonialService {
       position:"Entrepreneur"
     }
 
-    console.log([sujeto1,sujeto2,sujeto3])
     return [sujeto1,sujeto2,sujeto3,sujeto4,sujeto5]
   }
 
