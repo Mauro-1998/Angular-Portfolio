@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {timer} from "rxjs";
-import {Testimonial} from "./testimonial";
-import {TestimonialService} from "./testimonial.service";
+import { Referencias } from 'src/app/dto/about/referencias';
+
+
+
 
 @Component({
   selector: 'app-testimonials',
@@ -12,13 +13,14 @@ import {TestimonialService} from "./testimonial.service";
 
 export class TestimonialsComponent implements OnInit {
 
-
-  childs: Testimonial[];
+  
+  @Input() testimonials: Referencias[];
+  
 
   responsiveOptions;
 
 
-  constructor(private testimonialService: TestimonialService) {
+  constructor() {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -34,7 +36,6 @@ export class TestimonialsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.childs = this.testimonialService.createTestimonials();
-    console.log(this.childs)
+    //console.log("REFERENCIAS - TestimonialComponent: " + JSON.stringify(this.testimonials))
   }
 }

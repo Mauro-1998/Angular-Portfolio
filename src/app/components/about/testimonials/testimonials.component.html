@@ -5,7 +5,7 @@
     <h2>Referencias</h2>
   </div>
 
-  <p-carousel [value]="childs" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000" [responsiveOptions]="responsiveOptions">
+  <p-carousel [value]="testimonials" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000" [responsiveOptions]="responsiveOptions">
     <ng-template let-testimonial pTemplate="item">
 
       <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -15,12 +15,12 @@
                 <div class="testimonial-item">
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    {{testimonial.content}}
+                    {{testimonial.descripcion}}
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
-                  <img src="{{testimonial.imageURL}}" class="testimonial-img" alt="">
-                  <h3>{{testimonial.author}}</h3>
-                  <h4>{{testimonial.position}}</h4>
+                  <img src={{testimonial.urlFoto}} class="testimonial-img" alt="">
+                  <h3>{{testimonial.nombre}}</h3>
+                  <h4>{{testimonial.puesto}}</h4>
                 </div>
               </div>
         </div>

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
     {titulo:'Inicio',value:"",selected:true},
     {titulo:'Sobre mi',value:"about",selected:false},
     {titulo:'Resumen',value:"resume",selected:false},
-    {titulo:'Proyectos',value:"projects",selected:false},
+    //{titulo:'Proyectos',value:"projects",selected:false},
     {titulo:'Contacto',value:"contact",selected:false},
   ]
 

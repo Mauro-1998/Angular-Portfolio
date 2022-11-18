@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Experiencia } from 'src/app/dto/resumen/experiencia';
 
 @Component({
   selector: 'app-experience',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor() { }
+  @Input() experiencias: Experiencia[];
+
+  list: String[];
+  
+
+  constructor() {
+    
+  }
+
 
   ngOnInit(): void {
+    console.log("EXPERIENCIAS: " + JSON.stringify(this.experiencias))
   }
+
+
+  
 
 }
