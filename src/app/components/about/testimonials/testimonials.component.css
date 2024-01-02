@@ -1,3 +1,5 @@
+@import 'primeng/resources/themes/saga-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
@@ -69,3 +71,60 @@
 .p-carousel .p-carousel-indicators .p-carousel-indicator button {
   background-color: #18d26e;
 }
+
+
+
+/* AGREGADO ESTILOS BOTONES DE CRUD */
+/* Estilos para el botón custom-button con mayor especificidad */
+:host ::ng-deep .custom-button .p-button-label {
+  background-color: transparent !important; /* Fondo transparente */
+  border: none !important; /* Sin borde */
+  color: #fff !important; /* Color del icono en blanco */
+}
+
+:host ::ng-deep .custom-button:hover .p-button-label {
+  background-color: #35e888 !important; /* Cambio de color al pasar el ratón */
+}
+
+:host ::ng-deep .custom-button:active .p-button-label {
+  background-color: #35e888 !important; /* Color al hacer clic */
+}
+
+:host ::ng-deep .custom-button:disabled .p-button-label {
+  background-color: transparent !important;
+  color: #ccc !important;
+}
+
+/* Cambio de color del icono al pasar el ratón */
+:host ::ng-deep .custom-button:hover .p-button-label .pi,
+:host ::ng-deep .custom-button:hover .p-button-label .pi:after {
+  color: #fff !important;
+}
+
+:host ::ng-deep .custom-button:disabled .p-button-label .pi,
+:host ::ng-deep .custom-button:active .p-button-label .pi {
+  color: #ccc !important;
+}
+
+.resume-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Alinea los elementos a los extremos */
+}
+
+.resume-title h3 {
+  margin: 0;
+  /* Elimina el margen predeterminado del título */
+}
+
+.resume-title app-crud-buttons {
+  margin-left: 10px;
+}
+
+/* Para alinear los botones a la derecha */
+.app-crud-buttons-container {
+  margin-left: auto;
+}
+
+

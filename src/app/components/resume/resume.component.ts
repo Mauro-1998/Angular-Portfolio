@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {timer} from "rxjs";
+import { timer } from "rxjs";
 import { Carrera } from 'src/app/dto/resumen/carrera';
+import { Curso } from 'src/app/dto/resumen/curso';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';
 import { ResponseDTO } from 'src/app/dto/resumen/responseDTO';
 import { ResumeService } from 'src/app/service/resume.service';
-
 
 @Component({
   selector: 'app-resume',
@@ -13,29 +13,26 @@ import { ResumeService } from 'src/app/service/resume.service';
 })
 export class ResumeComponent implements OnInit {
 
-  showClass:boolean = false;
-
+  showClass: boolean = false;
   carreras: Carrera[];
-
   experiencias: Experiencia[];
+  cursos:Curso[]
 
   constructor(private service: ResumeService) { 
-    this.service.getResume().subscribe((response: ResponseDTO) => {
+    const userEmail = 'molinamauro12@gmail.com';  // Reemplaza con el email del usuario actual
+    this.service.getResume(userEmail).subscribe((response: ResponseDTO): void => {
       if (response) {
         this.carreras = response.carreras;
         this.experiencias = response.experiencias;
-        console.log("CARRERAS RESUME COMPONENT: " + JSON.stringify(this.carreras))
-        console.log("EXPERIENCIAS RESUME COMPONENT: " + JSON.stringify(this.experiencias))
+        this.cursos =response.cursos;
       }
     })
   }
 
   ngOnInit(): void {
     const delay = timer(100);
-
     delay.subscribe(() => {
       this.showClass = true;
     });
   }
-
 }

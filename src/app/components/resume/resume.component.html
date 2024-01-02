@@ -1,5 +1,5 @@
 <!-- ======= Resume Section ======= -->
-<section id="resume" [ngClass]="showClass ? 'resume section-show' : 'resume'" >
+<section id="resume" [ngClass]="showClass ? 'resume section-show' : 'resume'">
   <div class="container">
 
     <div class="section-title">
@@ -10,12 +10,13 @@
     <div class="row">
       <div class="col-lg-6">
         <app-summary></app-summary>
-        <app-experience [experiencias]="experiencias" ></app-experience>
+        <app-experience [experiencias]="experiencias"></app-experience>
       </div>
 
 
       <div class="col-lg-6">
         <app-education [carrera]="carreras"></app-education>
+        <app-courses [cursos]="cursos"></app-courses>
       </div>
     </div>
   </div>

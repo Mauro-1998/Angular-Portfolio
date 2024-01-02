@@ -1,6 +1,7 @@
 import {Component, OnInit, } from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {AboutComponent} from "../about/about.component";
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -18,11 +19,18 @@ export class NavbarComponent implements OnInit {
     {titulo:'Resumen',value:"resume",selected:false},
     //{titulo:'Proyectos',value:"projects",selected:false},
     {titulo:'Contacto',value:"contact",selected:false},
+    {titulo:'Login',value:"login",selected:false}
   ]
 
-  constructor(private header:HeaderComponent) { }
+  constructor(private router: Router, private header:HeaderComponent) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const currentRoute = event.urlAfterRedirects.substr(1); // Elimina el primer '/' de la ruta
+        this.changeContent(currentRoute.toLowerCase());
+      }
+    });
   }
 
   changeIconMenu(){

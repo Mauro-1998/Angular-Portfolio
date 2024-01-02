@@ -1,0 +1,44 @@
+<section id="contact" class="contact" [ngClass]="showClass ? 'contact section-show' : 'contact'">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Login</h2>
+            <p>Editar informacion</p>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" role="form" class="php-email-form mt-4">
+            <!-- Tus campos de formulario -->
+            <div class="row">
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" formControlName="email" placeholder="Tu Correo" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="password" formControlName="password" class="form-control" placeholder="Contraseña" required>
+              </div>
+            </div>
+            <div class="my-3">
+              <div *ngIf="loading" class="loading">Cargando...</div>
+            
+              <!-- Mostrar errores específicos para el campo "email" -->
+              <div *ngIf="loginForm.get('email')?.hasError('serverError')" class="error-message">
+                {{ loginForm.get('email')?.getError('serverError') }}
+              </div>
+            
+              <!-- Mostrar errores específicos para el campo "password" -->
+              <div *ngIf="loginForm.get('password')?.hasError('serverError')" class="error-message">
+                {{ loginForm.get('password')?.getError('serverError') }}
+              </div>
+            
+              <!-- Mostrar el mensaje de error general -->
+              <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
+            
+              <!-- Mostrar el mensaje de éxito -->
+              <div *ngIf="okMessage" class="sent-message">
+                {{ okMessage }}
+              </div>
+            </div>
+            <div class="text-center"><button type="submit">Login</button></div>
+          </form>
+    </div>
+</section><!-- End Contact Section -->

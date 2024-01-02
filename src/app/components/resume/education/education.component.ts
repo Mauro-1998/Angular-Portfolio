@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Carrera } from 'src/app/dto/resumen/carrera';
+import { ModalService } from 'src/app/service/modal.service';
+
+import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
 
 @Component({
   selector: 'app-education',
@@ -8,11 +11,34 @@ import { Carrera } from 'src/app/dto/resumen/carrera';
 })
 export class EducationComponent implements OnInit {
 
-  @Input() carrera: Carrera[];
+  isHovered: boolean = false;
+
+  isLoginOK: boolean = false;
   
-  constructor() { }
+  @Input() carrera: Carrera[];
+
+  
+  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) { }
 
   ngOnInit(): void {
+    if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
+      this.isLoginOK = true;
+    } else {
+      console.log('No hay token disponible. No se carga el componente.');
+    }
   }
+
+  hoverButtonColor() {
+    this.isHovered = true;
+  }
+
+  resetButtonColor() {
+    this.isHovered = false;
+  }
+
+  openAddEducationModal() {
+    this.modalService.openAddEducationModal();
+  }
+  
 
 }

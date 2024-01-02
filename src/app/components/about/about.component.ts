@@ -27,7 +27,8 @@ export class AboutComponent implements OnInit {
   
 
   constructor(private aboutService: AboutService) {
-    this.aboutService.getUser().subscribe(response => {
+    const userEmail = 'molinamauro12@gmail.com';
+    this.aboutService.getUser(userEmail).subscribe(response => {
       if(response != null){
         this.user = response
         this.aboutMe = new UserDTO(this.user.userDTO.nombre,this.user.userDTO.apellido,this.user.userDTO.descripcion,this.user.userDTO.nacimiento,this.user.userDTO.telefono,this.user.userDTO.email,this.user.userDTO.domicilio,this.user.userDTO.urlFoto);

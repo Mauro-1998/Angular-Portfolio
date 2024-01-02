@@ -20,7 +20,7 @@
             <li><i class="bi bi-chevron-right"></i> <strong>Nacimiento:</strong> <span>{{aboutMe?.nacimiento | date: 'mediumDate'}}</span></li>
             <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
             <li><i class="bi bi-chevron-right"></i> <strong>Telefono:</strong> <span>{{aboutMe?.telefono}}</span></li>
-            <li><i class="bi bi-chevron-right"></i> <strong>Ciudad:</strong> <span>Mendoza, Argentina - {{aboutMe?.domicilio}}</span></li>
+            <i class="bi bi-chevron-right"></i> <strong>Ciudad:</strong> <span *ngIf="aboutMe?.domicilio">Mendoza, Arg - {{ aboutMe?.domicilio }}</span>
           </ul>
         </div>
         <div class="col-lg-6">

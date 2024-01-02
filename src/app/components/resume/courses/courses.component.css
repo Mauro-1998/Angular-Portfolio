@@ -1,0 +1,25 @@
+.resume-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resume-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.course-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alinea los elementos a los extremos del contenedor */
+}
+
+.course-info h4 {
+    margin-right: 10px; /* Ajusta el margen entre el nombre y los botones */
+}
+
+.app-crud-buttons-container {
+    margin-left: auto; /* Mueve los botones hacia la derecha al máximo */
+}

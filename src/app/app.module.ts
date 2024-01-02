@@ -19,9 +19,17 @@ import { ExperienceComponent } from './components/resume/experience/experience.c
 import { SummaryComponent } from './components/resume/summary/summary.component';
 import { CoursesComponent } from './components/resume/courses/courses.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './service/token-interceptor.service';
+import { AuthService } from './service/auth.service';
+import { CrudButtonsComponent } from './components/crud-buttons/crud-buttons.component';
+import { DialogModule } from 'primeng/dialog';
+import { AddCourseComponent } from './components/modals/add-course/add-course.component';
+import { AddExperienceComponent } from './components/modals/add-experience/add-experience.component';
+import { AddEducationComponent } from './components/modals/add-education/add-education.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,15 +47,24 @@ import { HttpClientModule } from '@angular/common/http';
     ExperienceComponent,
     SummaryComponent,
     CoursesComponent,
+    LoginComponent,
+    CrudButtonsComponent,
+    AddCourseComponent,
+    AddExperienceComponent,
+    AddEducationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
     ButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    DialogModule,
+    ButtonModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [TokenInterceptorService,AuthService,DialogService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

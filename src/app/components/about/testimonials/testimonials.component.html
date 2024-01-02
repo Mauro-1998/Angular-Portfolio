@@ -1,35 +1,32 @@
 <!-- ======= Testimonials ======= -->
 <div class="testimonials container">
 
-  <div class="section-title" >
-    <h2>Referencias</h2>
+  <div class="section-title resume-title">
+    <h2><span>Referencias</span></h2>
+    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" [showEditButton]="false" [showDeleteButton]="false"></app-crud-buttons>
   </div>
 
-  <p-carousel [value]="testimonials" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000" [responsiveOptions]="responsiveOptions">
+  <p-carousel [value]="testimonials" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000"
+    [responsiveOptions]="responsiveOptions">
     <ng-template let-testimonial pTemplate="item">
-
       <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper-wrapper">
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    {{testimonial.descripcion}}
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src={{testimonial.urlFoto}} class="testimonial-img" alt="">
-                  <h3>{{testimonial.nombre}}</h3>
-                  <h4>{{testimonial.puesto}}</h4>
-                </div>
-              </div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                {{testimonial.descripcion}}
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="{{testimonial.urlFoto}}" class="testimonial-img" alt="">
+              <h3>{{testimonial.nombre}}</h3>
+              <h4>{{testimonial.puesto}}</h4>
+              <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" [showAddButton]="false"></app-crud-buttons>
+            </div>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
-      </div>
-
-
-      <div class="owl-carousel testimonials-carousel">
-
       </div>
     </ng-template>
   </p-carousel>

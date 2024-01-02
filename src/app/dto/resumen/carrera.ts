@@ -1,6 +1,6 @@
 export class Carrera {
 
-    carrera:String;
+    nombre:String;
     facultad:String;
     inicio: Date;
     fin: Date;
@@ -8,8 +8,8 @@ export class Carrera {
     descripcion: String;
     
 
-    constructor(carrera: String, facultad: String, inicio: Date, fin: Date, descripcion:String, finalizado:Boolean) {
-        this.carrera = carrera;
+    constructor(nombre: String, facultad: String, inicio: Date, fin: Date, descripcion:String, finalizado:Boolean) {
+        this.nombre = nombre;
         this.facultad = facultad;
         this.inicio = inicio;
         this.fin = fin;

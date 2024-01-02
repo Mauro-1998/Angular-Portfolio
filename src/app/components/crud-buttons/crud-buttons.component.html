@@ -1,0 +1,16 @@
+<div *ngIf="isLoginOK" class="mt-3 d-flex justify-content-center">
+  <p-button icon="pi pi-plus" *ngIf="showAddButton" styleClass="p-button-rounded custom-button"
+    [style]="isHovered ? buttonStyles.hover : buttonStyles.base" (mouseover)="hoverButtonColor()"
+    (mouseout)="resetButtonColor()">
+  </p-button>
+
+  <p-button icon="pi pi-trash" *ngIf="showDeleteButton" styleClass="p-button-rounded custom-button"
+    [style]="isHovered ? buttonStyles.deleteHover : buttonStyles.delete" (mouseover)="hoverButtonColor()"
+    (mouseout)="resetButtonColor()">
+  </p-button>
+
+  <p-button icon="pi pi-pencil" *ngIf="showEditButton" styleClass="p-button-rounded custom-button"
+    [style]="isHovered ? buttonStyles.editHover : buttonStyles.edit" (mouseover)="hoverButtonColor()"
+    (mouseout)="resetButtonColor()">
+  </p-button>
+</div>
