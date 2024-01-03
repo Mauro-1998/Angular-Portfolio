@@ -1,0 +1,9 @@
+.date-fields-container {
+    display: flex;
+    justify-content: space-between; /* Ajusta la distribución del espacio entre los elementos */
+  }
+  
+  .date-fields-container .p-calendar {
+    flex: 1; /* Ocupa el espacio disponible de manera equitativa */
+    margin-right: 10px; /* O ajusta el margen según tus necesidades */
+  }

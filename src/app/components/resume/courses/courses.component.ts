@@ -16,7 +16,9 @@ export class CoursesComponent implements OnInit {
 
   @Input() cursos: Curso[];
 
-  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) { }
+  componentType: 'course' = 'course';
+
+  constructor(private tokenInterceptorService: TokenInterceptorService) { }
 
   
   ngOnInit(): void {
@@ -38,8 +40,6 @@ export class CoursesComponent implements OnInit {
     this.isHovered = false;
   }
 
-  openAddCourseModal() {
-    this.modalService.openAddCourseModal();
-  }
+  
 
 }

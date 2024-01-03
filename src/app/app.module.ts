@@ -30,6 +30,12 @@ import { AddExperienceComponent } from './components/modals/add-experience/add-e
 import { AddEducationComponent } from './components/modals/add-education/add-education.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
+import { AddTestimonialsComponent } from './components/modals/add-testimonials/add-testimonials.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +58,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddCourseComponent,
     AddExperienceComponent,
     AddEducationComponent,
+    AddTestimonialsComponent,
   ],
   imports: [
+    CalendarModule,
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
@@ -62,7 +70,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     DialogModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    ButtonModule,
+    CheckboxModule,
+    FormsModule
   ],
   providers: [TokenInterceptorService,AuthService,DialogService],
   bootstrap: [AppComponent],

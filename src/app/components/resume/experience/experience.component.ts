@@ -18,9 +18,9 @@ export class ExperienceComponent implements OnInit {
 
   isLoginOK: boolean = false;
 
- 
+  componentType: 'experience' = 'experience';
   
-  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) {
+  constructor(private tokenInterceptorService: TokenInterceptorService) {
     
   }
 
@@ -34,9 +34,6 @@ export class ExperienceComponent implements OnInit {
     }
   }
 
-  openAddExperienceModal() {
-    this.modalService.openAddExperienceModal();
-  }
   
 
 }

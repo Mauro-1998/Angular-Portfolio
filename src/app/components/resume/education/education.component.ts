@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Carrera } from 'src/app/dto/resumen/carrera';
-import { ModalService } from 'src/app/service/modal.service';
 
 import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
 
@@ -14,11 +13,13 @@ export class EducationComponent implements OnInit {
   isHovered: boolean = false;
 
   isLoginOK: boolean = false;
+
+  componentType: 'education' = 'education';
   
   @Input() carrera: Carrera[];
 
   
-  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) { }
+  constructor(private tokenInterceptorService: TokenInterceptorService) { }
 
   ngOnInit(): void {
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
@@ -36,9 +37,7 @@ export class EducationComponent implements OnInit {
     this.isHovered = false;
   }
 
-  openAddEducationModal() {
-    this.modalService.openAddEducationModal();
-  }
+  
   
 
 }

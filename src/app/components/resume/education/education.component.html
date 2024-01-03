@@ -1,12 +1,12 @@
 <h3 class="resume-title">
   <span>Educación</span>
-  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false" (click)="openAddEducationModal()"></app-crud-buttons>
+  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false" [componentType]="componentType"></app-crud-buttons>
 </h3>
 
 <div class="resume-item" *ngFor="let c of carrera">
   <div class="course-info">
     <h4>{{c.nombre}}</h4>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false"></app-crud-buttons>
+    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType"></app-crud-buttons>
   </div>
   <div class="date-frame">
     <h5>{{c.inicio | date:'yyyy'}} - {{c.fin == null ? "Actualidad" : c.fin | date:'yyyy'}}</h5>

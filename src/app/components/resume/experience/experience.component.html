@@ -1,12 +1,12 @@
 <h3 class="resume-title">
   <span>Experiencia Profesional</span>
-  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false"  (click)="openAddExperienceModal()"></app-crud-buttons>
+  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false"  [componentType]="componentType"></app-crud-buttons>
 </h3>
 
 <div class="resume-item" *ngFor="let e of experiencias">
   <div class="course-info">
     <h4>{{e.puesto}}</h4>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false"></app-crud-buttons>
+    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType"></app-crud-buttons>
   </div>
   <div class="date-frame">
     <h5>{{e.inicio | date:'yyyy'}} - {{e.actual? "Actualidad" : e.fin}}</h5>

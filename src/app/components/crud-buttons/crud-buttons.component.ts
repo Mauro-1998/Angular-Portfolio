@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/service/modal.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class CrudButtonsComponent implements OnInit {
   @Input() showAddButton: boolean = true;
   @Input() showEditButton: boolean = true;
   @Input() showDeleteButton: boolean = true;
+  @Input() componentType: 'education' | 'experience' | 'course' | 'testimonials';
 
 
   
@@ -57,7 +59,7 @@ export class CrudButtonsComponent implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
   }
@@ -68,6 +70,58 @@ export class CrudButtonsComponent implements OnInit {
 
   resetButtonColor() {
     this.isHovered = false;
+  }
+
+  // Agrega la lógica según sea necesario utilizando componentType
+  editButtonClick() {
+    console.log('Edit Button Clicked:', this.componentType);
+    switch (this.componentType) {
+      case 'education':
+        this.modalService.openEditModal(this.componentType);
+        break;
+      case 'experience':
+        this.modalService.openEditModal(this.componentType);
+        // Lógica para la experiencia
+        break;
+      case 'course':
+        this.modalService.openEditModal(this.componentType);
+        // Lógica para el curso
+        break;
+      case 'testimonials':
+        this.modalService.openEditModal(this.componentType);
+        // Lógica para el testimonio
+        break;
+      default:
+        console.log("ERROR: Componente sin definir")
+        break;
+    }
+  }
+
+
+
+   // Agrega la lógica según sea necesario utilizando componentType
+   addButtonClick() {
+    console.log('Add Button Clicked:', this.componentType);
+    switch (this.componentType) {
+      case 'education':
+        this.modalService.openAddModal(this.componentType);
+        break;
+      case 'experience':
+        this.modalService.openAddModal(this.componentType);
+        // Lógica para la experiencia
+        break;
+      case 'course':
+        this.modalService.openAddModal(this.componentType);
+        // Lógica para el curso
+        break;
+      case 'testimonials':
+        this.modalService.openAddModal(this.componentType);
+        // Lógica para el curso
+        break;
+      default:
+        console.log("ERROR: Componente sin definir")
+        break;
+    }
   }
 
 }

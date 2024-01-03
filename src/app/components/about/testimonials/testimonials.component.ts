@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { Referencias } from 'src/app/dto/about/referencias';
 import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
@@ -16,9 +16,11 @@ export class TestimonialsComponent implements OnInit {
 
   @Input() testimonials: Referencias[];
 
+  componentType: 'testimonials' = 'testimonials';
+
   responsiveOptions;
 
-  constructor(private http: HttpClient, private tokenInterceptorService: TokenInterceptorService) {
+  constructor(private tokenInterceptorService: TokenInterceptorService) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
