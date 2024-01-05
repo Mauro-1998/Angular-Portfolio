@@ -25,9 +25,9 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import { AuthService } from './service/auth.service';
 import { CrudButtonsComponent } from './components/crud-buttons/crud-buttons.component';
 import { DialogModule } from 'primeng/dialog';
-import { AddCourseComponent } from './components/modals/add-course/add-course.component';
-import { AddExperienceComponent } from './components/modals/add-experience/add-experience.component';
-import { AddEducationComponent } from './components/modals/add-education/add-education.component';
+import { AddCourseComponent } from './components/modals/add/add-course/add-course.component';
+import { AddExperienceComponent } from './components/modals/add/add-experience/add-experience.component';
+import { AddEducationComponent } from './components/modals/add/add-education/add-education.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
@@ -35,7 +35,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
-import { AddTestimonialsComponent } from './components/modals/add-testimonials/add-testimonials.component';
+import { AddTestimonialsComponent } from './components/modals/add/add-testimonials/add-testimonials.component';
 
 @NgModule({
   declarations: [

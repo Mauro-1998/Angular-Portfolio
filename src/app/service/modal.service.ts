@@ -1,9 +1,9 @@
 import { Injectable, Type } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
-import { AddCourseComponent } from '../components/modals/add-course/add-course.component';
-import { AddEducationComponent } from '../components/modals/add-education/add-education.component';
-import { AddExperienceComponent } from '../components/modals/add-experience/add-experience.component';
-import { AddTestimonialsComponent } from '../components/modals/add-testimonials/add-testimonials.component';
+import { AddCourseComponent } from '../components/modals/add/add-course/add-course.component';
+import { AddEducationComponent } from '../components/modals/add/add-education/add-education.component';
+import { AddExperienceComponent } from '../components/modals/add/add-experience/add-experience.component';
+import { AddTestimonialsComponent } from '../components/modals/add/add-testimonials/add-testimonials.component';
 
 @Injectable({
   providedIn: 'root'
