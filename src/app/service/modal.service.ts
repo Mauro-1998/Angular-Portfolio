@@ -4,6 +4,9 @@ import { AddCourseComponent } from '../components/modals/add/add-course/add-cour
 import { AddEducationComponent } from '../components/modals/add/add-education/add-education.component';
 import { AddExperienceComponent } from '../components/modals/add/add-experience/add-experience.component';
 import { AddTestimonialsComponent } from '../components/modals/add/add-testimonials/add-testimonials.component';
+import { EditEducationComponent } from '../components/modals/edit/edit-education/edit-education.component';
+import { EditExperienceComponent } from '../components/modals/edit/edit-experience/edit-experience.component';
+import { EditCourseComponent } from '../components/modals/edit/edit-course/edit-course.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,20 +26,20 @@ export class ModalService {
     };
     switch (componentType) {
       case 'education':
-        options.header = 'Agregar Educación';
-        this.dialogService.open(AddEducationComponent, options);
+        options.header = 'Editar Educación';
+        this.dialogService.open(EditEducationComponent, options);
         break;
       case 'experience':
-        options.header = 'Agregar Educación';
-        this.dialogService.open(AddExperienceComponent, options);
+        options.header = 'Agregar Experiencia';
+        this.dialogService.open(EditExperienceComponent, options);
         break;
       case 'course':
-        options.header = 'Agregar Curso';
-        this.dialogService.open(AddCourseComponent, options);
+        options.header = 'Editar Curso';
+        this.dialogService.open(EditCourseComponent, options);
         break;
       case 'testimonials':
-        options.header = 'Agregar Testimonio';
-        this.dialogService.open(AddTestimonialsComponent, options);
+        options.header = 'Editar Testimonio';
+        this.dialogService.open(EditCourseComponent, options);
         break;
 
       default:
@@ -63,7 +66,7 @@ export class ModalService {
         this.dialogService.open(AddEducationComponent, options);
         break;
       case 'experience':
-        options.header = 'Agregar Educación';
+        options.header = 'Agregar Experiencia';
         this.dialogService.open(AddExperienceComponent, options);
         break;
       case 'course':

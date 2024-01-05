@@ -1,5 +1,6 @@
 /* AGREGADO ESTILOS BOTONES DE CRUD */
 /* Estilos para el botón custom-button con mayor especificidad */
+
 .custom-button .p-button-label {
   background-color: transparent !important; /* Fondo transparente */
   border: none !important; /* Sin borde */
