@@ -4,6 +4,7 @@ import { timer } from "rxjs";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
 import * as jwt_decode from 'jwt-decode';
+import { AppConfig } from '../../shared/config';
 
 interface JwtResponse {
   token: string;
@@ -22,10 +23,9 @@ export class LoginComponent implements OnInit {
   showClass: boolean = false;
   loginForm: FormGroup;
 
-  private readonly HOST = 'http://localhost';
-  private readonly PORT = '8080';
+  
   private readonly END_POINT = "/api/v1/auth/authenticate"
-  readonly URL = `${this.HOST}:${this.PORT}${this.END_POINT}`;
+  private readonly URL = `${AppConfig.host}:${AppConfig.port}${this.END_POINT}`;
 
 
   errorMessage: string = '';

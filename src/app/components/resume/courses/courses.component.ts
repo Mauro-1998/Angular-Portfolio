@@ -22,12 +22,12 @@ export class CoursesComponent implements OnInit {
 
   
   ngOnInit(): void {
-    console.log(this.cursos);
-    console.log("Cursos: " + JSON.stringify(this.cursos))
+    //console.log(this.cursos);
+    //console.log("Cursos: " + JSON.stringify(this.cursos))
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
       this.isLoginOK = true;
     } else {
-      console.log('No hay token disponible. No se carga el componente.');
+      //console.log('No hay token disponible. No se carga el componente.');
     }
   }
 

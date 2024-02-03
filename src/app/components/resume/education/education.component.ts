@@ -25,7 +25,7 @@ export class EducationComponent implements OnInit {
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
       this.isLoginOK = true;
     } else {
-      console.log('No hay token disponible. No se carga el componente.');
+      //console.log('No hay token disponible. No se carga el componente.');
     }
   }
 

@@ -51,7 +51,6 @@ export class NavbarComponent implements OnInit {
   }
 
   changeContent(value:string){
-    console.log("value: " + value)
     if(value !== ""){
       this.header.content = true
     }else{

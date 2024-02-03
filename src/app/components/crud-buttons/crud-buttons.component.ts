@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalService } from 'src/app/service/modal.service';
 
 
@@ -15,6 +15,7 @@ export class CrudButtonsComponent implements OnInit {
   @Input() showEditButton: boolean = true;
   @Input() showDeleteButton: boolean = true;
   @Input() componentType: 'education' | 'experience' | 'course' | 'testimonials';
+  @Output() deleteButtonClick: EventEmitter<number> = new EventEmitter<number>();
 
 
   
@@ -124,6 +125,16 @@ export class CrudButtonsComponent implements OnInit {
     }
   }
 
+
+  
+  deleteButtonClicked() {
+    console.log('Delete Button Clicked:', this.componentType);
+    
+    if (confirm('¿Estás seguro de que deseas eliminar este elemento?')) {
+      // Emite el evento de clic en el botón de eliminar
+      this.deleteButtonClick.emit();
+    }
+  }
 
 
   

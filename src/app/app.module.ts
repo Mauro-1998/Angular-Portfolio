@@ -36,6 +36,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { AddTestimonialsComponent } from './components/modals/add/add-testimonials/add-testimonials.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AddTestimonialsComponent } from './components/modals/add/add-testimonia
     AddTestimonialsComponent,
   ],
   imports: [
+    HttpClientModule,
     CalendarModule,
     BrowserModule,
     AppRoutingModule,
@@ -77,9 +79,10 @@ import { AddTestimonialsComponent } from './components/modals/add/add-testimonia
     InputTextareaModule,
     ButtonModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
   ],
-  providers: [TokenInterceptorService,AuthService,DialogService],
+  providers: [TokenInterceptorService,AuthService,DialogService,DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

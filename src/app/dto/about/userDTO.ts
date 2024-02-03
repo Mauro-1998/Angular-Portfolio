@@ -28,7 +28,6 @@ export class UserDTO{
 
     
     CalculateAge(nac:Date): Number {
-        console.log("CALCULATE AGE")
         if (nac != null) {
             let timeDiff = Math.abs(Date.now() - new Date(nac).getTime());
             return Math.ceil((timeDiff / (1000 * 3600 * 24)) / 365)-1;

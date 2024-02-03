@@ -1,12 +1,4 @@
 export class Curso {
-    /*
-    "nombre": "Prueba editar 2",
-    "descripcion": "Holis",
-    "inicio": "2023-06-01",
-    "fin": "2030-06-02",
-    "finalizado": false,
-    "certificadoURL": "https://drive.google.com/file/d/1CSqdHC8FqOeOb6k-UbdXsdNRPDKVKKMr/view"
-    */
 
     nombre: String;
     descripcion: String;

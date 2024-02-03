@@ -18,6 +18,10 @@ export class TokenInterceptorService implements HttpInterceptor {
     this.token = token;
   }
 
+  getToken(): string{
+    return this.token;
+  }
+
   hasToken(): boolean {
     return !!this.token;
   }
@@ -49,17 +53,25 @@ export class TokenInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // Obtén el token almacenado en el servicio
-    const token = this.token;
+    // Verifica si la solicitud no es de tipo GET
+    if (request.method !== 'GET') {
+      // Obtén el token almacenado en el servicio
+      const token = this.token;
 
-    // Clona la solicitud y agrega el encabezado de autorización con el token Bearer
-    const authRequest = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+      // Clona la solicitud y agrega el encabezado de autorización con el token Bearer
+      const authRequest = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    // Continúa con la solicitud clonada
-    return next.handle(authRequest);
+      console.info("AUTH REQUEST:", authRequest);
+
+      // Continúa con la solicitud clonada
+      return next.handle(authRequest);
+    }
+
+    // Si la solicitud es de tipo GET, continua sin modificarla
+    return next.handle(request);
   }
 }

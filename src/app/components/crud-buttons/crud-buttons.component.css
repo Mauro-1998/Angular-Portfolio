@@ -1,7 +1,5 @@
-/* AGREGADO ESTILOS BOTONES DE CRUD */
 /* Estilos para el botón custom-button con mayor especificidad */
-
-.custom-button .p-button-label {
+div.custom-button.p-button .p-button-label {
   background-color: transparent !important; /* Fondo transparente */
   border: none !important; /* Sin borde */
   color: #fff !important; /* Color del icono en blanco */
@@ -9,26 +7,26 @@
   padding: 4px 8px; /* Nuevo relleno */
 }
 
-.custom-button:hover .p-button-label {
+div.custom-button.p-button:hover .p-button-label {
   background-color: #35e888 !important; /* Cambio de color al pasar el ratón */
 }
 
-.custom-button:active .p-button-label {
+div.custom-button.p-button:active .p-button-label {
   background-color: #35e888 !important; /* Color al hacer clic */
 }
 
-.custom-button:disabled .p-button-label {
+div.custom-button.p-button:disabled .p-button-label {
   background-color: transparent !important;
   color: #ccc !important;
 }
 
 /* Cambio de color del icono al pasar el ratón */
-.custom-button:hover .p-button-label .pi,
-.custom-button:hover .p-button-label .pi:after {
+div.custom-button.p-button:hover .p-button-label .pi,
+div.custom-button.p-button:hover .p-button-label .pi:after {
   color: #fff !important;
 }
 
-.custom-button:disabled .p-button-label .pi,
-.custom-button:active .p-button-label .pi {
+div.custom-button.p-button:disabled .p-button-label .pi,
+div.custom-button.p-button:active .p-button-label .pi {
   color: #ccc !important;
 }
