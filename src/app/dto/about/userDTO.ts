@@ -1,6 +1,7 @@
 
 export class UserDTO{
     
+    id?:number;
     nombre: String;
     apellido: String;
     nacimiento: Date;
@@ -13,7 +14,7 @@ export class UserDTO{
     
 
 
-    constructor(nombre:String,apellido:String,descripcion:String,nacimiento:Date,telefono:String, email:String, domicilio:String, urlFoto:String){
+    constructor(nombre:String,apellido:String,descripcion:String,nacimiento:Date,telefono:String, email:String, domicilio:String, urlFoto:String, id?:number){
         this.nombre = nombre;
         this.apellido = apellido;
         this.descripcion = descripcion;
@@ -23,6 +24,7 @@ export class UserDTO{
         this.domicilio = domicilio;
         this.urlFoto = urlFoto;
         this.edad = this.CalculateAge(nacimiento);
+        this.id = id;
         //console.log("EDAD: " + this.edad)
     }
 

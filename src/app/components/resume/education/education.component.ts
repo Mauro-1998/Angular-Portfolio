@@ -38,6 +38,13 @@ export class EducationComponent implements OnInit {
   }
 
   
+  deleteButtonClickHandler(event: { type: string, id: number }) {
+    console.log(event);
+    if (event.type === 'course') {
+      // Accede al id y realiza la lógica necesaria
+      console.log('Eliminar elemento de cursos con ID:', event.id);
+    }
+  }
   
 
 }

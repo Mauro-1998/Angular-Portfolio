@@ -1,19 +1,21 @@
 <h3 class="resume-title">
   <span>Cursos</span>
-  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false" [componentType]="componentType"></app-crud-buttons>
+  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container"
+    [showDeleteButton]="false" [showEditButton]="false" [componentType]="componentType"></app-crud-buttons>
 </h3>
 
 <div class="resume-item" *ngFor="let c of cursos">
   <div class="course-info">
     <h4>{{c.nombre}}</h4>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType"></app-crud-buttons>
+    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container"
+      [showAddButton]="false" [componentType]="componentType" [id]="c.id"></app-crud-buttons>
   </div>
   <div class="date-frame">
     <h5>{{c.inicio | date:'dd-MM-yyyy'}} - {{!c.finalizado ? "Actualidad" : (c.fin | date:'dd-MM-yyyy')}}</h5>
   </div>
   <p><em><a href="{{c.certificado}}" target="_blank">CERTIFICADO</a></em></p>
   <p>
-    <ul *ngFor="let i of c.descripcion.split('\n')">
-      <li>{{i}}</li>
-    </ul>
+  <ul *ngFor="let i of c.descripcion.split('\n')">
+    <li>{{i}}</li>
+  </ul>
 </div>

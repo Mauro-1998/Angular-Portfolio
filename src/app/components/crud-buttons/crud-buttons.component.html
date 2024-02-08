@@ -6,7 +6,7 @@
 
   <p-button icon="pi pi-trash" *ngIf="showDeleteButton" styleClass="custom-button"
     [style]="isHovered ? buttonStyles.deleteHover : buttonStyles.delete" (mouseover)="hoverButtonColor()"
-    (mouseout)="resetButtonColor()" [rounded]="true">
+    (mouseout)="resetButtonColor()" (onClick)="deleteButtonClick()" [rounded]="true">
   </p-button>
 
   <p-button icon="pi pi-pencil" *ngIf="showEditButton" styleClass="custom-button"

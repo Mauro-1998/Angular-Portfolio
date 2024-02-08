@@ -1,14 +1,14 @@
 export class Carrera {
-
-    nombre:String;
-    facultad:String;
+    id?: number;
+    nombre: string;
+    facultad: string;
     inicio: Date;
     fin: Date;
-    finalizado: Boolean;
-    descripcion: String;
-    
+    finalizado: boolean;
+    descripcion: string;
 
-    constructor(nombre: String, facultad: String, inicio: Date, fin: Date, descripcion:String, finalizado:Boolean) {
+    constructor(nombre: string, facultad: string, inicio: Date, fin: Date, descripcion: string, finalizado: boolean, id?: number) {
+        this.id = id;
         this.nombre = nombre;
         this.facultad = facultad;
         this.inicio = inicio;
@@ -17,4 +17,3 @@ export class Carrera {
         this.descripcion = descripcion;
     }
 }
-

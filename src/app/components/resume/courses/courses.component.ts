@@ -11,26 +11,20 @@ import { TokenInterceptorService } from 'src/app/service/token-interceptor.servi
 export class CoursesComponent implements OnInit {
 
   isHovered: boolean = false;
-
   isLoginOK: boolean = false;
+  componentType: 'course' = 'course';
 
   @Input() cursos: Curso[];
 
-  componentType: 'course' = 'course';
-
   constructor(private tokenInterceptorService: TokenInterceptorService) { }
 
-  
   ngOnInit(): void {
-    //console.log(this.cursos);
-    //console.log("Cursos: " + JSON.stringify(this.cursos))
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
       this.isLoginOK = true;
     } else {
-      //console.log('No hay token disponible. No se carga el componente.');
+      // console.log('No hay token disponible. No se carga el componente.');
     }
   }
-
 
   hoverButtonColor() {
     this.isHovered = true;
@@ -40,6 +34,11 @@ export class CoursesComponent implements OnInit {
     this.isHovered = false;
   }
 
-  
-
+  deleteButtonClickHandler(event: { type: string, id: number }) {
+    console.log(event);
+    if (event.type === 'course') {
+      // Lógica para eliminar un elemento de cursos con el ID proporcionado
+      console.log('Eliminar elemento de cursos con ID:', event.id);
+    }
+  }
 }

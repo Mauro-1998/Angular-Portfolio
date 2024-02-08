@@ -1,19 +1,19 @@
 export class Experiencia {
-
-    empresa: String;
-    puesto: String;
-    descripcion: String;
+    id?: number;
+    empresa: string;
+    puesto: string;
+    descripcion: string;
     inicio: Date;
     fin: Date;
-    actual: Boolean;
+    actual: boolean;
 
-    constructor(empresa: String, inicio: Date, fin: Date, descripcion:String, actual:Boolean, puesto:String) {
-        this.descripcion = descripcion;
+    constructor(empresa: string, inicio: Date, fin: Date, descripcion: string, actual: boolean, puesto: string, id?: number) {
+        this.id = id;
+        this.empresa = empresa;
         this.inicio = inicio;
         this.fin = fin;
-        this.empresa = empresa;
+        this.descripcion = descripcion;
         this.actual = actual;
         this.puesto = puesto;
     }
-   
 }

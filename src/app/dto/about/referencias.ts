@@ -1,15 +1,15 @@
 export class Referencias {
-    
+    id?: number;
     descripcion:String;
     nombre:String;
     urlFoto:String;
     puesto:String;
 
-    constructor(content:String,author:String,imageURL:String,position:String){
+    constructor(content:String,author:String,imageURL:String,position:String,id?: number){
+        this.id = id;
         this.descripcion = content;
         this.nombre = author;
         this.urlFoto = imageURL;
-        console.log(this.nombre +": " + this.urlFoto )
         this.puesto = position;
     }
 }

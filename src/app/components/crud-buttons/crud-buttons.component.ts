@@ -14,11 +14,13 @@ export class CrudButtonsComponent implements OnInit {
   @Input() showAddButton: boolean = true;
   @Input() showEditButton: boolean = true;
   @Input() showDeleteButton: boolean = true;
+
+  @Input() id: number; 
   @Input() componentType: 'education' | 'experience' | 'course' | 'testimonials';
-  @Output() deleteButtonClick: EventEmitter<number> = new EventEmitter<number>();
 
 
-  
+
+
 
   buttonStyles = {
     base: {
@@ -48,7 +50,7 @@ export class CrudButtonsComponent implements OnInit {
       'background-color': 'red',
       'border-color': 'red'
     },
-  
+
     edit: {
       'background-color': 'transparent',
       'border': '2px solid transparent',
@@ -75,21 +77,21 @@ export class CrudButtonsComponent implements OnInit {
 
   // Agrega la lógica según sea necesario utilizando componentType
   editButtonClick() {
-    console.log('Edit Button Clicked:', this.componentType);
+    console.log('Edit Button Clicked:', this.componentType, " ID: " + this.id);
     switch (this.componentType) {
       case 'education':
-        this.modalService.openEditModal(this.componentType);
+        this.modalService.openEditModal(this.componentType, this.id);
         break;
       case 'experience':
-        this.modalService.openEditModal(this.componentType);
+        this.modalService.openEditModal(this.componentType, this.id);
         // Lógica para la experiencia
         break;
       case 'course':
-        this.modalService.openEditModal(this.componentType);
+        this.modalService.openEditModal(this.componentType, this.id);
         // Lógica para el curso
         break;
       case 'testimonials':
-        this.modalService.openEditModal(this.componentType);
+        this.modalService.openEditModal(this.componentType, this.id);
         // Lógica para el testimonio
         break;
       default:
@@ -100,9 +102,8 @@ export class CrudButtonsComponent implements OnInit {
 
 
 
-   // Agrega la lógica según sea necesario utilizando componentType
-   addButtonClick() {
-    console.log('Add Button Clicked:', this.componentType);
+  // Agrega la lógica según sea necesario utilizando componentType
+  addButtonClick() {
     switch (this.componentType) {
       case 'education':
         this.modalService.openAddModal(this.componentType);
@@ -126,16 +127,31 @@ export class CrudButtonsComponent implements OnInit {
   }
 
 
-  
-  deleteButtonClicked() {
-    console.log('Delete Button Clicked:', this.componentType);
-    
-    if (confirm('¿Estás seguro de que deseas eliminar este elemento?')) {
-      // Emite el evento de clic en el botón de eliminar
-      this.deleteButtonClick.emit();
+
+  deleteButtonClick() {
+    console.log('Delete Button Clicked:', this.componentType, " ID: " + this.id);
+    switch (this.componentType) {
+      case 'education':
+        this.modalService.openDeleteModal(this.componentType, this.id);
+        break;
+      case 'experience':
+        this.modalService.openDeleteModal(this.componentType, this.id);
+        // Lógica para la experiencia
+        break;
+      case 'course':
+        this.modalService.openDeleteModal(this.componentType, this.id);
+        // Lógica para el curso
+        break;
+      case 'testimonials':
+        this.modalService.openDeleteModal(this.componentType, this.id);
+        // Lógica para el testimonio
+        break;
+      default:
+        console.log("ERROR: Componente sin definir")
+        break;
     }
   }
 
 
-  
+
 }

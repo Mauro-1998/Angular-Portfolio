@@ -7,6 +7,10 @@ import { AddTestimonialsComponent } from '../components/modals/add/add-testimoni
 import { EditEducationComponent } from '../components/modals/edit/edit-education/edit-education.component';
 import { EditExperienceComponent } from '../components/modals/edit/edit-experience/edit-experience.component';
 import { EditCourseComponent } from '../components/modals/edit/edit-course/edit-course.component';
+import { DeleteTestimonialComponent } from '../components/modals/delete/delete-testimonial/delete-testimonial.component';
+import { DeleteCourseComponent } from '../components/modals/delete/delete-course/delete-course.component';
+import { DeleteExperienceComponent } from '../components/modals/delete/delete-experience/delete-experience.component';
+import { DeleteEducationComponent } from '../components/modals/delete/delete-education/delete-education.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +19,8 @@ export class ModalService {
   constructor(private dialogService: DialogService) { }
 
 
-  openEditModal(componentType: 'education' | 'experience' | 'course' | 'testimonials') {
-    console.log("MODAL SERVICE: " + componentType)
+  openEditModal(componentType: 'education' | 'experience' | 'course' | 'testimonials', id: number) {
+    console.log("MODAL Edit SERVICE: " + componentType + " ID: " + id)
     const options = {
       header: '',
       width: '70%',
@@ -51,7 +55,8 @@ export class ModalService {
 
 
   openAddModal(componentType: 'education' | 'experience' | 'course' | 'testimonials') {
-    console.log("MODAL SERVICE: " + componentType)
+    console.log("MODAL Add SERVICE: " + componentType)
+    
 
     const options = {
       header: '',
@@ -83,6 +88,42 @@ export class ModalService {
         break;
     }
   }
+    
+
+
+  openDeleteModal(componentType: 'education' | 'experience' | 'course' | 'testimonials', id: number) {
+    console.log("MODAL Delete SERVICE: " + componentType + " ID: " + id)
+    const options = {
+      header: '',
+      width: '70%',
+      contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
+      styleClass: 'ui-dialog-dark',
+      isUpdating: false // Ajusta esto según tus necesidades
+    };
+    switch (componentType) {
+      case 'education':
+        options.header = 'Eliminar Educación';
+        this.dialogService.open(DeleteEducationComponent, options);
+        break;
+      case 'experience':
+        options.header = 'Eliminar Experiencia';
+        this.dialogService.open(DeleteExperienceComponent, options);
+        break;
+      case 'course':
+        options.header = 'Eliminar Curso';
+        this.dialogService.open(DeleteCourseComponent, options);
+        break;
+      case 'testimonials':
+        options.header = 'Eliminar Testimonio';
+        this.dialogService.open(DeleteTestimonialComponent, options);
+        break;
+
+      default:
+        // Manejo de caso por defecto (puedes ajustarlo según tus necesidades)
+        break;
+    }
+  }
+    
 
 
 }
