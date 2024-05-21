@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-delete-testimonial',
-  standalone: true,
-  imports: [],
   templateUrl: './delete-testimonial.component.html',
-  styleUrl: './delete-testimonial.component.css'
+  styleUrls: ['./delete-testimonial.component.css']
 })
 export class DeleteTestimonialComponent {
 
+  constructor(public ref: DynamicDialogRef) { }
+
+  cancel() {
+    this.ref.close(); // Cerrar la ventana modal sin eliminar el testimonio
+  }
+
+  confirm() {
+    // Lógica para eliminar el testimonio
+    console.log('Testimonio eliminado');
+    this.ref.close();
+  }
 }

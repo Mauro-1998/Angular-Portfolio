@@ -1,0 +1,8 @@
+.confirm-btn {
+    width: 8rem;
+    margin-right: 1rem; /* Agrega un margen derecho entre los botones */
+  }
+  
+  .cancel-btn {
+    width: 8rem;
+  }

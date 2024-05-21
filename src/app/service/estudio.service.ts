@@ -58,8 +58,21 @@ export class EstudioService {
   }
 
   eliminarEstudio(id: number): Observable<void> {
-    const url = `${this.URL}/${id}`;
-    return this.http.delete<void>(url);
+    const token = this.tokenInterceptorService.getToken();
+    if (token && this.tokenInterceptorService.isTokenValid()) {
+      const url = `${this.URL}${this.END_POINT_DELETE}`;
+      const body = { id: id }; // Crea el cuerpo de la solicitud con el id
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      });
+  
+      // Aquí realizamos una solicitud DELETE pero enviamos el cuerpo como si fuera una solicitud POST
+      return this.http.delete<void>(url, { headers: headers, body: body });
+    } else {
+      console.error('Token inválido o no presente.');
+      return new Observable(); 
+    }
   }
 }
 

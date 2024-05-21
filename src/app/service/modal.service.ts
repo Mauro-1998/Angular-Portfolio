@@ -56,8 +56,7 @@ export class ModalService {
 
   openAddModal(componentType: 'education' | 'experience' | 'course' | 'testimonials') {
     console.log("MODAL Add SERVICE: " + componentType)
-    
-
+  
     const options = {
       header: '',
       width: '70%',
@@ -98,7 +97,8 @@ export class ModalService {
       width: '70%',
       contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
       styleClass: 'ui-dialog-dark',
-      isUpdating: false // Ajusta esto según tus necesidades
+      isUpdating: false,
+      data: { id: id }
     };
     switch (componentType) {
       case 'education':

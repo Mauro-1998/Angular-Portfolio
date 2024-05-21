@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';
 import { ModalService } from 'src/app/service/modal.service';
+import { ResumeService } from 'src/app/service/resume.service';
 import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
 
 @Component({
@@ -20,10 +21,10 @@ export class ExperienceComponent implements OnInit {
 
   componentType: 'experience' = 'experience';
   
-  constructor(private tokenInterceptorService: TokenInterceptorService) {
+  
+  constructor(private tokenInterceptorService: TokenInterceptorService, resumeService: ResumeService) {
     
   }
-
 
   ngOnInit(): void {
     //console.log("EXPERIENCIAS: " + JSON.stringify(this.experiencias))
@@ -33,7 +34,4 @@ export class ExperienceComponent implements OnInit {
       //console.log('No hay token disponible. No se carga el componente.');
     }
   }
-
-  
-
 }

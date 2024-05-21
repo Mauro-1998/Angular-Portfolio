@@ -17,14 +17,14 @@ export class ResumeComponent implements OnInit {
   carreras: Carrera[];
   experiencias: Experiencia[];
   cursos:Curso[]
+  readonly email:string = "molinamauro12@gmail.com"
 
-  constructor(private service: ResumeService) { 
-    const userEmail = 'molinamauro12@gmail.com';  // Reemplaza con el email del usuario actual
-    this.service.getResume(userEmail).subscribe((response: ResponseDTO): void => {
+  constructor(private resumeService: ResumeService) { 
+    this.resumeService.getResume(this.email).subscribe((response: ResponseDTO): void => {
       if (response) {
         this.carreras = response.carreras;
         this.experiencias = response.experiencias;
-        this.cursos =response.cursos;
+        this.cursos = response.cursos;
       }
     })
   }
@@ -34,5 +34,8 @@ export class ResumeComponent implements OnInit {
     delay.subscribe(() => {
       this.showClass = true;
     });
+
+
+   
   }
 }
