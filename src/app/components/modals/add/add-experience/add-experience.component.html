@@ -1,1 +1,69 @@
-<p>add-experience works!</p>
+<form [formGroup]="experienceForm" (ngSubmit)="onSubmit()" class="container">
+    <div class="row">
+      <!-- Empresa -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" type="text" formControlName="empresa" class="form-control" />
+          <small *ngIf="experienceForm.get('empresa').hasError('required')" class="text-danger">Empresa no debe ser nula</small>
+          <small *ngIf="experienceForm.get('empresa').hasError('minlength')" class="text-danger">Empresa debe tener al menos 1 caracter</small>
+          <small *ngIf="experienceForm.get('empresa').hasError('maxlength')" class="text-danger">Empresa debe tener como máximo 45 caracteres</small>
+        </div>
+      </div>
+      <!-- Puesto -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="puesto">Puesto</label>
+          <input id="puesto" type="text" formControlName="puesto" class="form-control" />
+          <small *ngIf="experienceForm.get('puesto').hasError('required')" class="text-danger">Puesto no debe ser nulo</small>
+          <small *ngIf="experienceForm.get('puesto').hasError('minlength')" class="text-danger">Puesto debe tener al menos 1 caracter</small>
+          <small *ngIf="experienceForm.get('puesto').hasError('maxlength')" class="text-danger">Puesto debe tener como máximo 45 caracteres</small>
+        </div>
+      </div>
+      <!-- Descripción -->
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="descripcion">Descripcion</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+          <small *ngIf="experienceForm.get('descripcion').hasError('required')" class="text-danger">Descripcion no debe ser nula</small>
+          <small *ngIf="experienceForm.get('descripcion').hasError('minlength')" class="text-danger">Descripcion debe tener al menos 1 caracter</small>
+          <small *ngIf="experienceForm.get('descripcion').hasError('maxlength')" class="text-danger">Descripcion debe tener como máximo 500 caracteres</small>
+        </div>
+      </div>
+      <!-- Fecha de inicio -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="inicio">Fecha de inicio</label>
+          <input id="inicio" type="date" formControlName="inicio" class="form-control" [max]="maxFechaHoy" />
+          <small *ngIf="experienceForm.get('inicio').hasError('required')" class="text-danger">Debe indicar la fecha de inicio</small>
+          <small *ngIf="experienceForm.get('inicio').hasError('dateAfter')" class="text-danger">La fecha de inicio debe ser anterior o igual a hoy</small>
+        </div>
+      </div>
+      <!-- Fecha de fin -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="fin">Fecha de fin</label>
+          <input id="fin" type="date" formControlName="fin" class="form-control" [min]="experienceForm.get('inicio').value" />
+          <small *ngIf="experienceForm.get('fin').hasError('required')" class="text-danger">Debe indicar la fecha de fin</small>
+          <small *ngIf="experienceForm.get('fin').hasError('dateAfter')" class="text-danger">La fecha de fin debe ser posterior a la de inicio</small>
+          <small *ngIf="experienceForm.get('fin').hasError('endDateInvalid')" class="text-danger">La fecha de fin no puede ser anterior a la de inicio</small>
+          <small *ngIf="experienceForm.get('fin').hasError('finDefinedWhenActual')" class="text-danger">La fecha de fin no puede estar definida si sigues trabajando en el mismo puesto</small>
+          <small *ngIf="experienceForm.get('fin').hasError('finRequiredWhenNotActual')" class="text-danger">La fecha de fin debe estar definida si ya no trabajas en ese puesto</small>
+        </div>
+      </div>
+      <!-- Actual -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="actual">Actual</label>
+          <input id="actual" type="checkbox" formControlName="actual" class="form-check-input" />
+        </div>
+      </div>
+      <!-- Botón de Guardar -->
+      <div class="col-md-12">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!experienceForm.valid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  

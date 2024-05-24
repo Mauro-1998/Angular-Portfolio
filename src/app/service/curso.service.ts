@@ -38,10 +38,6 @@ export class CursoService {
     // Obtén el token del servicio TokenInterceptorService
     const token = this.tokenInterceptorService.getToken();
 
-    console.log("finalizado: ",cursoDTO.finalizado);
-    console.log("inicio: ",cursoDTO.inicio);
-    console.log("fin: ",cursoDTO.fin);
-
     // Verifica si el token está presente y es válido
     if (token && this.tokenInterceptorService.isTokenValid()) {
       // Establece el token en el interceptor (si es necesario)

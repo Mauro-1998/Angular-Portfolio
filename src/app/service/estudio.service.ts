@@ -12,6 +12,7 @@ export class EstudioService {
   readonly END_POINT_ADD = '/estudio/add';
   readonly END_POINT_DELETE = '/estudio/delete'
   readonly END_POINT_UPDATE = '/estudio/update'
+  readonly END_POINT_GET = '/estudio/list'
   readonly URL = `${AppConfig.host}:${AppConfig.port}`;
 
   constructor(
