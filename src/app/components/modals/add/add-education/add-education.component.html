@@ -1,12 +1,12 @@
 <form [formGroup]="estudioForm" (ngSubmit)="guardarEstudio()" class="container">
   <div class="row">
-    <!-- Nombre del curso y Nombre de la institución en la misma fila -->
+    <!-- Nombre de la carrera y Nombre de la institución en la misma fila -->
     <div class="col-md-6">
       <div class="p-field">
-        <label for="nombre">Nombre del curso</label>
+        <label for="nombre">Nombre de la carrera</label>
         <input id="nombre" type="text" pInputText formControlName="nombre" class="form-control" />
-        <small *ngIf="estudioForm.get('nombre').hasError('required')" class="p-error">Debe indicar el nombre del
-          curso</small>
+        <small *ngIf="estudioForm.get('nombre').hasError('required')" class="p-error">Debe indicar el nombre de la
+          carrera</small>
       </div>
     </div>
     <div class="col-md-6">
@@ -21,13 +21,13 @@
     <!-- Descripción en una fila -->
     <div class="col-md-12">
       <div class="p-field">
-        <label for="descripcion">Descripción</label>
+        <label for="descripcion">Descripcion</label>
         <textarea id="descripcion" pInputTextarea formControlName="descripcion" class="form-control"></textarea>
         <small *ngIf="estudioForm.get('descripcion').hasError('required')" class="p-error">Debe agregar una
-          descripción</small>
-        <small *ngIf="estudioForm.get('descripcion').hasError('minlength')" class="p-error">La descripción debe tener al
+          descripcion</small>
+        <small *ngIf="estudioForm.get('descripcion').hasError('minlength')" class="p-error">La descripcion debe tener al
           menos 1 caracter</small>
-        <small *ngIf="estudioForm.get('descripcion').hasError('maxlength')" class="p-error">La descripción no puede
+        <small *ngIf="estudioForm.get('descripcion').hasError('maxlength')" class="p-error">La descripcion no puede
           tener más de 500 caracteres</small>
       </div>
     </div>
@@ -78,7 +78,7 @@
     <!-- Botón de Guardar en una fila -->
     <div class="col-md-12">
       <div class="p-field">
-<button type="submit" pButton label="Guardar" [disabled]="!puedeGuardar()" class="btn btn-primary"></button>        
+        <button type="submit" pButton label="Guardar" [disabled]="!puedeGuardar()" class="btn btn-primary"></button>
       </div>
     </div>
 

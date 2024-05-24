@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Curso } from '../dto/resumen/curso';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +37,10 @@ export class CursoService {
   guardarCurso(cursoDTO: Curso): Observable<any> {
     // Obtén el token del servicio TokenInterceptorService
     const token = this.tokenInterceptorService.getToken();
+
+    console.log("finalizado: ",cursoDTO.finalizado);
+    console.log("inicio: ",cursoDTO.inicio);
+    console.log("fin: ",cursoDTO.fin);
 
     // Verifica si el token está presente y es válido
     if (token && this.tokenInterceptorService.isTokenValid()) {
@@ -96,8 +101,6 @@ export class CursoService {
       return new Observable();
     }
   }
-  
-  
   
 
   notifyCursoChange(): void {

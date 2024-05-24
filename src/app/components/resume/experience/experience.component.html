@@ -9,7 +9,7 @@
     <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType" [id]="e.id"></app-crud-buttons>
   </div>
   <div class="date-frame">
-    <h5>{{e.inicio | date:'yyyy'}} - {{e.actual? "Actualidad" : e.fin}}</h5>
+    <h5>{{e.inicio | date:'yyyy-MM'}} - {{e.actual? "Actualidad" : e.fin | date:'yyyy-MM'}}</h5>
   </div>
   <p><em>{{e.empresa}} - Mendoza, Argentina</em></p>
   <p>
