@@ -62,14 +62,13 @@ import { CommonModule, DatePipe } from '@angular/common';
     AddTestimonialsComponent,
   ],
   imports: [
-    HttpClientModule,
+    
     CalendarModule,
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
     ButtonModule,
     HttpClientModule,
-    ReactiveFormsModule,
     DialogModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -77,7 +76,6 @@ import { CommonModule, DatePipe } from '@angular/common';
     InputTextModule,
     InputTextareaModule,
     CheckboxModule,
-    FormsModule,
     CommonModule,
   ],
   providers: [TokenInterceptorService,AuthService,DialogService,DatePipe],

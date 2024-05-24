@@ -34,7 +34,7 @@ export class ModalService {
         this.dialogService.open(EditEducationComponent, options);
         break;
       case 'experience':
-        options.header = 'Agregar Experiencia';
+        options.header = 'Editar Experiencia';
         this.dialogService.open(EditExperienceComponent, options);
         break;
       case 'course':

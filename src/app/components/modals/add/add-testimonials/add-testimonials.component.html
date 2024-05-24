@@ -1,1 +1,50 @@
-<p>add-testimonials works!</p>
+<form [formGroup]="testimonialForm" (ngSubmit)="onSubmit()" class="container">
+    <div class="row">
+      <!-- Nombre -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre" class="form-control" />
+          <small *ngIf="testimonialForm.get('nombre').hasError('required')" class="text-danger">Nombre no debe ser nulo</small>
+          <small *ngIf="testimonialForm.get('nombre').hasError('minlength')" class="text-danger">Nombre debe tener al menos 1 caracter</small>
+          <small *ngIf="testimonialForm.get('nombre').hasError('maxlength')" class="text-danger">Nombre debe tener como máximo 45 caracteres</small>
+        </div>
+      </div>
+      <!-- Puesto -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="puesto">Puesto</label>
+          <input id="puesto" type="text" formControlName="puesto" class="form-control" />
+          <small *ngIf="testimonialForm.get('puesto').hasError('required')" class="text-danger">Puesto no debe ser nulo</small>
+          <small *ngIf="testimonialForm.get('puesto').hasError('minlength')" class="text-danger">Puesto debe tener al menos 1 caracter</small>
+          <small *ngIf="testimonialForm.get('puesto').hasError('maxlength')" class="text-danger">Puesto debe tener como máximo 45 caracteres</small>
+        </div>
+      </div>
+      <!-- Descripción -->
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="descripcion">Descripcion</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+          <small *ngIf="testimonialForm.get('descripcion').hasError('required')" class="text-danger">Descripcion no debe ser nula</small>
+          <small *ngIf="testimonialForm.get('descripcion').hasError('minlength')" class="text-danger">Descripcion debe tener al menos 1 caracter</small>
+          <small *ngIf="testimonialForm.get('descripcion').hasError('maxlength')" class="text-danger">Descripcion debe tener como máximo 300 caracteres</small>
+        </div>
+      </div>
+      <!-- URL de la Foto -->
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="fotoURL">URL de la Foto</label>
+          <input id="fotoURL" type="text" formControlName="fotoURL" class="form-control" />
+          <small *ngIf="testimonialForm.get('fotoURL').hasError('required')" class="text-danger">URL de la foto no debe ser nula</small>
+          <small *ngIf="testimonialForm.get('fotoURL').hasError('pattern')" class="text-danger">Debe brindar una URL de la foto valida</small>
+        </div>
+      </div>
+      <!-- Botón de Guardar -->
+      <div class="col-md-12">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!testimonialForm.valid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
