@@ -12,6 +12,7 @@
       <div class="p-field">
         <label for="certificadoURL">URL del certificado</label>
         <input id="certificadoURL" type="text" formControlName="certificadoURL" class="form-control" />
+        <small *ngIf="cursoForm.get('certificadoURL').hasError('required')" class="p-error">Debe ingresar la URL del certificado si el curso esta finalizado</small>
         <small *ngIf="cursoForm.get('certificadoURL').hasError('pattern')" class="p-error">Debe ingresar una URL valida</small>
       </div>
     </div>
@@ -41,7 +42,7 @@
         <label for="fin">Fecha de fin</label>
         <input id="fin" type="date" formControlName="fin" class="form-control" [min]="cursoForm.get('inicio').value" />
         <small *ngIf="cursoForm.get('fin').hasError('required')" class="p-error">Debe indicar la fecha de fin</small>
-        <small *ngIf="cursoForm.get('fin').hasError('endDateInvalid')" class="p-error">La fecha de fin no puede ser posterior a hoy si el curso está finalizado</small>
+        <small *ngIf="cursoForm.get('fin').hasError('endDateInvalid')" class="p-error">La fecha de fin no puede ser posterior a hoy si el curso esta finalizado</small>
         <small *ngIf="cursoForm.get('fin').hasError('endDateNotAllowed')" class="p-error">La fecha de fin no está permitida si el curso no está finalizado</small>
       </div>
     </div>
@@ -51,14 +52,14 @@
       <div class="p-field">
         <label for="finalizado">Finalizado</label>
         <input id="finalizado" type="checkbox" formControlName="finalizado" class="form-check-input" />
-        <small *ngIf="cursoForm.get('fin').hasError('endDateInvalid') && cursoForm.get('finalizado').value" class="p-error">La fecha de fin no puede ser posterior a hoy si el curso está finalizado</small>
+        <small *ngIf="cursoForm.get('finalizado').value && cursoForm.get('fin').hasError('endDateInvalid')" class="p-error">La fecha de fin no puede ser posterior a hoy si el curso está finalizado</small>
       </div>
     </div>
 
     <!-- Botón de Guardar en una fila -->
     <div class="col-md-12">
       <div class="p-field">
-        <button type="submit" pButton label="Guardar" [disabled]="!puedeGuardar()" class="btn btn-primary"></button>
+        <button type="submit" pButton [disabled]="!puedeGuardar()" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>

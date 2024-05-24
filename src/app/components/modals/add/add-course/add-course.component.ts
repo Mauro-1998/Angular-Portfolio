@@ -32,14 +32,14 @@ export class AddCourseComponent implements OnInit {
     });
 
     this.cursoForm.get('finalizado').valueChanges.subscribe(() => {
-      this.updateFinValidators();
+      this.updateValidators();
     });
 
     this.cursoForm.get('inicio').valueChanges.subscribe(() => {
-      this.updateFinValidators();
+      this.updateValidators();
     });
 
-    this.updateFinValidators();
+    this.updateValidators();
   }
 
   pastOrPresentValidator(): ValidatorFn {
@@ -50,23 +50,36 @@ export class AddCourseComponent implements OnInit {
     };
   }
 
-  updateFinValidators(): void {
+  updateValidators(): void {
     const finControl = this.cursoForm.get('fin');
     const inicioControl = this.cursoForm.get('inicio');
+    const certificadoURLControl = this.cursoForm.get('certificadoURL');
     const finalizado = this.cursoForm.get('finalizado').value;
 
     if (finalizado) {
       finControl.enable();
       finControl.setValidators([Validators.required, this.pastOrPresentValidator()]);
+      certificadoURLControl.setValidators([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(300),
+        Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?')
+      ]);
       if (inicioControl.value) {
         finControl.setValidators([Validators.required, Validators.min(inicioControl.value), this.pastOrPresentValidator()]);
       }
     } else {
       finControl.clearValidators();
       finControl.disable();
+      certificadoURLControl.setValidators([
+        Validators.minLength(1),
+        Validators.maxLength(300),
+        Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?')
+      ]);
     }
 
     finControl.updateValueAndValidity();
+    certificadoURLControl.updateValueAndValidity();
   }
 
   validateFechas(group: FormGroup): {[key: string]: any} | null {
