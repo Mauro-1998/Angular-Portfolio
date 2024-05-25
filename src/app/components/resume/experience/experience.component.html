@@ -1,15 +1,31 @@
 <h3 class="resume-title">
   <span>Experiencia Profesional</span>
-  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false"  [componentType]="componentType"></app-crud-buttons>
+  <app-crud-buttons 
+    [isHovered]="isHovered" 
+    [isLoginOK]="isLoginOK" 
+    class="app-crud-buttons-container" 
+    [showDeleteButton]="false" 
+    [showEditButton]="false"  
+    [componentType]="componentType">
+  </app-crud-buttons>
 </h3>
 
 <div class="resume-item" *ngFor="let e of experiencias">
   <div class="course-info">
     <h4>{{e.puesto}}</h4>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType" [id]="e.id"></app-crud-buttons>
+    <app-crud-buttons 
+      [isHovered]="isHovered" 
+      [isLoginOK]="isLoginOK" 
+      class="app-crud-buttons-container" 
+      [showAddButton]="false" 
+      [componentType]="componentType" 
+      [id]="e.id"
+      [entity]="e" 
+      > <!-- Manejar el evento -->
+    </app-crud-buttons>
   </div>
   <div class="date-frame">
-    <h5>{{e.inicio | date:'yyyy-MM'}} - {{e.actual? "Actualidad" : e.fin | date:'yyyy-MM'}}</h5>
+    <h5>{{e.inicio | date:'yyyy-MM'}} - {{e.actual ? 'Actualidad' : e.fin | date:'yyyy-MM'}}</h5>
   </div>
   <p><em>{{e.empresa}} - Mendoza, Argentina</em></p>
   <p>

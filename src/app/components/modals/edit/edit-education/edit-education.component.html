@@ -1,1 +1,63 @@
-<p>edit-education works!</p>
+<form [formGroup]="estudioForm" (ngSubmit)="guardarEstudio()" class="container">
+    <div class="row">
+      <!-- Nombre de la carrera y Nombre de la institución en la misma fila -->
+      <div class="col-md-6">
+        <div class="p-field">
+          <label for="nombre">Nombre de la carrera</label>
+          <input id="nombre" type="text" pInputText formControlName="nombre" class="form-control" />
+          <small *ngIf="estudioForm.get('nombre').hasError('required')" class="p-error">Debe indicar el nombre de la carrera</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-field">
+          <label for="facultad">Nombre de la institucion</label>
+          <input id="facultad" type="text" pInputText formControlName="facultad" class="form-control" />
+          <small *ngIf="estudioForm.get('facultad').hasError('required')" class="p-error">Debe indicar el nombre de la institucion</small>
+        </div>
+      </div>
+  
+      <!-- Descripción en una fila -->
+      <div class="col-md-12">
+        <div class="p-field">
+          <label for="descripcion">Descripcion</label>
+          <textarea id="descripcion" pInputTextarea formControlName="descripcion" class="form-control"></textarea>
+          <small *ngIf="estudioForm.get('descripcion').hasError('required')" class="p-error">Debe agregar una descripcion</small>
+          <small *ngIf="estudioForm.get('descripcion').hasError('minlength')" class="p-error">La descripcion debe tener al menos 1 caracter</small>
+          <small *ngIf="estudioForm.get('descripcion').hasError('maxlength')" class="p-error">La descripcion no puede tener más de 500 caracteres</small>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="p-field">
+          <label for="inicio">Fecha de inicio</label>
+          <input id="inicio" type="date" pInputText formControlName="inicio" [max]="maxFechaInicio" class="form-control" />
+          <small *ngIf="estudioForm.get('inicio').hasError('required')" class="p-error">Debe indicar la fecha de inicio</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-field">
+          <label for="fin">Fecha de fin</label>
+          <input id="fin" type="date" pInputText formControlName="fin" class="form-control" [max]="maxFechaHoy" [min]="estudioForm.get('inicio').value" />
+          <div *ngIf="estudioForm.get('fin').hasError('invalidRange')" class="p-error">La fecha de fin debe ser posterior o igual a la de inicio</div>
+          <div *ngIf="estudioForm.get('fin').hasError('fechaFinPosteriorAHoy')" class="p-error">La fecha de fin no puede ser posterior a la de hoy si el estudio esta finalizado</div>
+        </div>
+      </div>
+  
+      <!-- Checkbox de Finalizado en una fila -->
+      <div class="col-md-6">
+        <div class="p-field">
+          <label for="finalizado">Finalizado</label>
+          <p-checkbox id="finalizado" formControlName="finalizado" class="p-checkbox" name="finalizado" [binary]="true"></p-checkbox>
+          <small *ngIf="estudioForm.get('fin').hasError('fechaFinPosteriorAHoy')" class="p-error">La fecha de fin no puede ser posterior a la de hoy si el estudio esta finalizado</small>
+        </div>
+      </div>
+  
+      <!-- Botón de Guardar en una fila -->
+      <div class="col-md-12">
+        <div class="p-field">
+          <button type="submit" pButton label="Guardar" [disabled]="!puedeGuardar()" class="btn btn-outline-warning"></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  

@@ -37,6 +37,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { AddTestimonialsComponent } from './components/modals/add/add-testimonials/add-testimonials.component';
 import { CommonModule, DatePipe } from '@angular/common';
+import { EditEducationComponent } from './components/modals/edit/edit-education/edit-education.component';
+import { EditExperienceComponent } from './components/modals/edit/edit-experience/edit-experience.component';
+import { EditTestimonialsComponent } from './components/modals/edit/edit-testimonials/edit-testimonials.component';
+import { EditCourseComponent } from './components/modals/edit/edit-course/edit-course.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +64,11 @@ import { CommonModule, DatePipe } from '@angular/common';
     AddExperienceComponent,
     AddEducationComponent,
     AddTestimonialsComponent,
+    EditEducationComponent,
+    EditExperienceComponent,
+    EditTestimonialsComponent,
+    EditCourseComponent,
+    
   ],
   imports: [
     

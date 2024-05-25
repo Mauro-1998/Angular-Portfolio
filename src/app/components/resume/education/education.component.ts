@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Carrera } from 'src/app/dto/resumen/carrera';
-
 import { TokenInterceptorService } from 'src/app/service/token-interceptor.service';
+import { ModalService } from 'src/app/service/modal.service';
 
 @Component({
   selector: 'app-education',
@@ -11,15 +11,12 @@ import { TokenInterceptorService } from 'src/app/service/token-interceptor.servi
 export class EducationComponent implements OnInit {
 
   isHovered: boolean = false;
-
   isLoginOK: boolean = false;
-
   componentType: 'education' = 'education';
   
   @Input() carrera: Carrera[];
 
-  
-  constructor(private tokenInterceptorService: TokenInterceptorService) { }
+  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
@@ -37,14 +34,5 @@ export class EducationComponent implements OnInit {
     this.isHovered = false;
   }
 
-  
-  deleteButtonClickHandler(event: { type: string, id: number }) {
-    console.log(event);
-    if (event.type === 'course') {
-      // Accede al id y realiza la lógica necesaria
-      console.log('Eliminar elemento de cursos con ID:', event.id);
-    }
-  }
-  
-
+ 
 }

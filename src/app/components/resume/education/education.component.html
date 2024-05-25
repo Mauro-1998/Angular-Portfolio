@@ -1,15 +1,30 @@
 <h3 class="resume-title">
   <span>Educación</span>
-  <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showDeleteButton]="false" [showEditButton]="false" [componentType]="componentType"></app-crud-buttons>
+  <app-crud-buttons 
+    [isHovered]="isHovered" 
+    [isLoginOK]="isLoginOK" 
+    class="app-crud-buttons-container" 
+    [showDeleteButton]="false" 
+    [showEditButton]="false" 
+    [componentType]="componentType">
+  </app-crud-buttons>
 </h3>
 
 <div class="resume-item" *ngFor="let c of carrera">
   <div class="course-info">
     <h4>{{c.nombre}}</h4>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" class="app-crud-buttons-container" [showAddButton]="false" [componentType]="componentType" [id]="c.id"></app-crud-buttons>
+    <app-crud-buttons 
+      [isHovered]="isHovered" 
+      [isLoginOK]="isLoginOK" 
+      class="app-crud-buttons-container" 
+      [showAddButton]="false" 
+      [componentType]="componentType" 
+      [id]="c.id"
+      [entity]="c"> <!-- Manejar el evento -->
+    </app-crud-buttons>
   </div>
   <div class="date-frame">
-    <h5>{{c.inicio | date:'yyyy'}} - {{c.fin == null ? "Actualidad" : c.fin | date:'yyyy'}}</h5>
+    <h5>{{c.inicio | date:'yyyy'}} - {{c.fin == null ? 'Actualidad' : c.fin | date:'yyyy'}}</h5>
   </div>
   <p><em>{{c.facultad}}</em></p>
   <p>

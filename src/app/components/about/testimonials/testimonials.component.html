@@ -1,16 +1,25 @@
-<!-- ======= Testimonials ======= -->
 <div class="testimonials container">
-
   <div class="section-title resume-title">
     <h2><span>Referencias</span></h2>
-    <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" [showEditButton]="false" [showDeleteButton]="false" [componentType]="componentType"></app-crud-buttons>
+    <app-crud-buttons 
+      [isHovered]="isHovered" 
+      [isLoginOK]="isLoginOK" 
+      [showEditButton]="false" 
+      [showDeleteButton]="false" 
+      [componentType]="componentType">
+    </app-crud-buttons>
   </div>
 
-  <p-carousel [value]="testimonials" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="10000"
+  <p-carousel 
+    [value]="testimonials" 
+    [numVisible]="3" 
+    [numScroll]="1" 
+    [circular]="true" 
+    [autoplayInterval]="10000" 
     [responsiveOptions]="responsiveOptions">
+    
     <ng-template let-testimonial pTemplate="item">
       <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="testimonial-item">
@@ -22,7 +31,14 @@
               <img src="{{testimonial.urlFoto}}" class="testimonial-img" alt="">
               <h3>{{testimonial.nombre}}</h3>
               <h4>{{testimonial.puesto}}</h4>
-              <app-crud-buttons [isHovered]="isHovered" [isLoginOK]="isLoginOK" [showAddButton]="false" [componentType]="componentType" [id]="testimonial.id"></app-crud-buttons>
+              <app-crud-buttons 
+                [isHovered]="isHovered" 
+                [isLoginOK]="isLoginOK" 
+                [showAddButton]="false" 
+                [componentType]="componentType" 
+                [id]="testimonial.id"
+                [entity]="testimonial">
+              </app-crud-buttons>
             </div>
           </div>
         </div>
@@ -30,5 +46,4 @@
       </div>
     </ng-template>
   </p-carousel>
-
-</div><!-- End Testimonials  -->
+</div>

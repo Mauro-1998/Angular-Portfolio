@@ -34,11 +34,5 @@ export class CoursesComponent implements OnInit {
     this.isHovered = false;
   }
 
-  deleteButtonClickHandler(event: { type: string, id: number }) {
-    console.log(event);
-    if (event.type === 'course') {
-      // Lógica para eliminar un elemento de cursos con el ID proporcionado
-      console.log('Eliminar elemento de cursos con ID:', event.id);
-    }
-  }
+ 
 }

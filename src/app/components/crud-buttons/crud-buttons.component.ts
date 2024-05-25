@@ -14,9 +14,11 @@ export class CrudButtonsComponent implements OnInit {
   @Input() showAddButton: boolean = true;
   @Input() showEditButton: boolean = true;
   @Input() showDeleteButton: boolean = true;
-
-  @Input() id: number; 
+  @Input() id: number;
   @Input() componentType: 'education' | 'experience' | 'course' | 'testimonials';
+  @Input() entity: any; // Nueva entrada para la entidad
+
+  @Output() editClicked = new EventEmitter<any>(); // Nuevo evento de salida
 
 
 
@@ -75,83 +77,22 @@ export class CrudButtonsComponent implements OnInit {
     this.isHovered = false;
   }
 
-  // Agrega la lógica según sea necesario utilizando componentType
   editButtonClick() {
-    console.log('Edit Button Clicked:', this.componentType, " ID: " + this.id);
-    switch (this.componentType) {
-      case 'education':
-        this.modalService.openEditModal(this.componentType, this.id);
-        break;
-      case 'experience':
-        this.modalService.openEditModal(this.componentType, this.id);
-        // Lógica para la experiencia
-        break;
-      case 'course':
-        this.modalService.openEditModal(this.componentType, this.id);
-        // Lógica para el curso
-        break;
-      case 'testimonials':
-        this.modalService.openEditModal(this.componentType, this.id);
-        // Lógica para el testimonio
-        break;
-      default:
-        console.log("ERROR: Componente sin definir")
-        break;
-    }
+    console.log('Edit Button Clicked: ', this.componentType, " entity: " + this.entity);
+    this.editClicked.emit(this.entity); // Emitir el evento con la entidad
+    this.modalService.openEditModal(this.componentType, this.entity); // Abrir el modal con la entidad
+  }
+
+  addButtonClick(){
+    console.log('Add Button Clicked from: ', this.componentType);
+    this.modalService.openAddModal(this.componentType);
   }
 
 
-
-  // Agrega la lógica según sea necesario utilizando componentType
-  addButtonClick() {
-    switch (this.componentType) {
-      case 'education':
-        this.modalService.openAddModal(this.componentType);
-        break;
-      case 'experience':
-        this.modalService.openAddModal(this.componentType);
-        // Lógica para la experiencia
-        break;
-      case 'course':
-        this.modalService.openAddModal(this.componentType);
-        // Lógica para el curso
-        break;
-      case 'testimonials':
-        this.modalService.openAddModal(this.componentType);
-        // Lógica para el curso
-        break;
-      default:
-        console.log("ERROR: Componente sin definir")
-        break;
-    }
+  deleteButtonClick(){
+    console.log('Delete Button Clicked from ', this.componentType, " ID: ", this.id);
+    this.modalService.openDeleteModal(this.componentType,this.id);
   }
 
-
-
-  deleteButtonClick() {
-    console.log('Delete Button Clicked:', this.componentType, " ID: " + this.id);
-    switch (this.componentType) {
-      case 'education':
-        this.modalService.openDeleteModal(this.componentType, this.id);
-        break;
-      case 'experience':
-        this.modalService.openDeleteModal(this.componentType, this.id);
-        // Lógica para la experiencia
-        break;
-      case 'course':
-        this.modalService.openDeleteModal(this.componentType, this.id);
-        // Lógica para el curso
-        break;
-      case 'testimonials':
-        this.modalService.openDeleteModal(this.componentType, this.id);
-        // Lógica para el testimonio
-        break;
-      default:
-        console.log("ERROR: Componente sin definir")
-        break;
-    }
-  }
-
-
-
+  
 }

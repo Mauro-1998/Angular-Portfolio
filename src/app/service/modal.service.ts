@@ -1,4 +1,4 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddCourseComponent } from '../components/modals/add/add-course/add-course.component';
 import { AddEducationComponent } from '../components/modals/add/add-education/add-education.component';
@@ -7,10 +7,16 @@ import { AddTestimonialsComponent } from '../components/modals/add/add-testimoni
 import { EditEducationComponent } from '../components/modals/edit/edit-education/edit-education.component';
 import { EditExperienceComponent } from '../components/modals/edit/edit-experience/edit-experience.component';
 import { EditCourseComponent } from '../components/modals/edit/edit-course/edit-course.component';
+import { EditTestimonialsComponent } from '../components/modals/edit/edit-testimonials/edit-testimonials.component';
 import { DeleteTestimonialComponent } from '../components/modals/delete/delete-testimonial/delete-testimonial.component';
 import { DeleteCourseComponent } from '../components/modals/delete/delete-course/delete-course.component';
 import { DeleteExperienceComponent } from '../components/modals/delete/delete-experience/delete-experience.component';
 import { DeleteEducationComponent } from '../components/modals/delete/delete-education/delete-education.component';
+
+import { EstudioDTO } from '../dto/about/estudioDTO';
+import { Experiencia } from '../dto/resumen/experiencia';
+import { Curso } from '../dto/resumen/curso';
+import { Referencias } from '../dto/about/referencias';
 
 @Injectable({
   providedIn: 'root'
@@ -18,51 +24,16 @@ import { DeleteEducationComponent } from '../components/modals/delete/delete-edu
 export class ModalService {
   constructor(private dialogService: DialogService) { }
 
-
-  openEditModal(componentType: 'education' | 'experience' | 'course' | 'testimonials', id: number) {
-    console.log("MODAL Edit SERVICE: " + componentType + " ID: " + id)
-    const options = {
-      header: '',
-      width: '70%',
-      contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
-      styleClass: 'ui-dialog-dark',
-      isUpdating: true // Ajusta esto según tus necesidades
-    };
-    switch (componentType) {
-      case 'education':
-        options.header = 'Editar Educación';
-        this.dialogService.open(EditEducationComponent, options);
-        break;
-      case 'experience':
-        options.header = 'Editar Experiencia';
-        this.dialogService.open(EditExperienceComponent, options);
-        break;
-      case 'course':
-        options.header = 'Editar Curso';
-        this.dialogService.open(EditCourseComponent, options);
-        break;
-      case 'testimonials':
-        options.header = 'Editar Testimonio';
-        this.dialogService.open(EditCourseComponent, options);
-        break;
-
-      default:
-        // Manejo de caso por defecto (puedes ajustarlo según tus necesidades)
-        break;
-    }
-  }
-
-
+  
 
   openAddModal(componentType: 'education' | 'experience' | 'course' | 'testimonials') {
-    console.log("MODAL Add SERVICE: " + componentType)
-  
+    console.log("MODAL Add SERVICE: " + componentType);
     const options = {
       header: '',
       width: '70%',
       contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
       styleClass: 'ui-dialog-dark',
-      isUpdating: false // Ajusta esto según tus necesidades
+      isUpdating: false
     };
     switch (componentType) {
       case 'education':
@@ -81,23 +52,18 @@ export class ModalService {
         options.header = 'Agregar Testimonio';
         this.dialogService.open(AddTestimonialsComponent, options);
         break;
-
       default:
-        // Manejo de caso por defecto (puedes ajustarlo según tus necesidades)
         break;
     }
   }
-    
-
 
   openDeleteModal(componentType: 'education' | 'experience' | 'course' | 'testimonials', id: number) {
-    console.log("MODAL Delete SERVICE: " + componentType + " ID: " + id)
+    console.log("MODAL Delete SERVICE: " + componentType + " ID: " + id);
     const options = {
       header: '',
       width: '70%',
       contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
       styleClass: 'ui-dialog-dark',
-      isUpdating: false,
       data: { id: id }
     };
     switch (componentType) {
@@ -117,13 +83,61 @@ export class ModalService {
         options.header = 'Eliminar Testimonio';
         this.dialogService.open(DeleteTestimonialComponent, options);
         break;
-
       default:
-        // Manejo de caso por defecto (puedes ajustarlo según tus necesidades)
         break;
     }
   }
-    
 
+  openEditModal(componentType: 'education' | 'experience' | 'course' | 'testimonials', entity: any) {
+    console.log("MODAL Edit SERVICE: " + componentType + " Entity: ", entity);
 
+    let castedEntity: EstudioDTO | Experiencia | Curso | Referencias;
+
+    switch (componentType) {
+      case 'education':
+        castedEntity = entity as EstudioDTO;
+        break;
+      case 'experience':
+        castedEntity = entity as Experiencia;
+        break;
+      case 'course':
+        castedEntity = entity as Curso;
+        break;
+      case 'testimonials':
+        castedEntity = entity as Referencias;
+        break;
+      default:
+        throw new Error('Tipo de componente no soportado');
+    }
+
+    const options = {
+      header: '',
+      width: '70%',
+      contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
+      styleClass: 'ui-dialog-dark',
+      data: { entity: castedEntity },
+      isUpdating: true
+    };
+
+    switch (componentType) {
+      case 'education':
+        options.header = 'Editar Educación';
+        this.dialogService.open(EditEducationComponent, options);
+        break;
+      case 'experience':
+        options.header = 'Editar Experiencia';
+        this.dialogService.open(EditExperienceComponent, options);
+        break;
+      case 'course':
+        options.header = 'Editar Curso';
+        this.dialogService.open(EditCourseComponent, options);
+        break;
+      case 'testimonials':
+        options.header = 'Editar Testimonio';
+        this.dialogService.open(EditTestimonialsComponent, options);
+        break;
+      default:
+        break;
+    }
+  }
 }
