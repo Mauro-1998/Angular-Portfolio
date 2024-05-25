@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';
 import { DatePipe } from '@angular/common';
+import { ExperienciaService } from 'src/app/service/experiencia.service';
 
 @Component({
   selector: 'app-edit-experience',
   templateUrl: './edit-experience.component.html',
   styleUrls: ['./edit-experience.component.css'],
-  providers: [DatePipe] // Provee el DatePipe aquí
+  providers: [DatePipe]
 })
 export class EditExperienceComponent implements OnInit {
   experienceForm: FormGroup;
@@ -17,6 +18,7 @@ export class EditExperienceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private config: DynamicDialogConfig,
+    private experienciaService: ExperienciaService,
     private datePipe: DatePipe // Agrega DatePipe en el constructor
   ) {
     const today = new Date();
@@ -87,8 +89,16 @@ export class EditExperienceComponent implements OnInit {
 
   onSubmit(): void {
     if (this.experienceForm.valid) {
-      // Aquí puedes implementar la lógica para guardar la experiencia
-      console.log('Formulario válido, experiencia guardada:', this.experienceForm.value);
+      const experiencia: Experiencia = this.experienceForm.value;
+      this.experienciaService.actualizarExperiencia(experiencia).subscribe(
+        response => {
+          // Manejo de la respuesta si es necesario
+          console.log('Experiencia actualizada:', response);
+        },
+        error => {
+          console.error('Error al actualizar experiencia:', error);
+        }
+      );
     } else {
       console.log('Formulario no válido.');
     }

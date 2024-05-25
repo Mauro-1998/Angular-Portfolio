@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';// Ajusta la ruta según tu estructura de archivos
-import { EstudioService } from 'src/app/service/estudio.service'; // Ajusta la ruta según tu estructura de archivos
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 
 @Component({

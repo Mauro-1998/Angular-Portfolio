@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AppConfig } from '../shared/config';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { TokenInterceptorService } from './token-interceptor.service';
+import { AppConfig } from '../shared/config';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { Curso } from '../dto/resumen/curso';
-
+import { TokenInterceptorService } from './token-interceptor.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,43 +23,26 @@ export class CursoService {
     private tokenInterceptorService: TokenInterceptorService
   ) { }
 
-  
-
-  // Método para obtener los cursos desde el servidor
   obtenerCursos(): Observable<Curso[]> {
-    const url = `${this.URL}${this.END_POINT_GET}`; // URL del endpoint para obtener la lista de cursos
-
-    // Realiza la solicitud HTTP para obtener los cursos
+    const url = `${this.URL}${this.END_POINT_GET}`;
     return this.http.get<Curso[]>(url);
   }
 
   guardarCurso(cursoDTO: Curso): Observable<any> {
-    // Obtén el token del servicio TokenInterceptorService
     const token = this.tokenInterceptorService.getToken();
-
-    // Verifica si el token está presente y es válido
     if (token && this.tokenInterceptorService.isTokenValid()) {
-      // Establece el token en el interceptor (si es necesario)
-      // this.tokenInterceptorService.setToken(token);
-
-      // Clona la solicitud y agrega el encabezado de autorización con el token Bearer
       const authRequest = this.createAuthRequest(cursoDTO, token, this.URL + this.END_POINT_ADD);
-
-      // Realiza la solicitud HTTP con la solicitud autenticada
       return this.http.post(this.URL + this.END_POINT_ADD, cursoDTO, { headers: authRequest.headers })
         .pipe(
-          tap(() => this.notifyCursoChange()) // Notificar cambio después de guardar el curso
+          tap(() => this.notifyCursoChange())
         );
     } else {
-      // Maneja el caso en el que el token no está presente o no es válido
       console.error('Token inválido o no presente.');
-      // Puedes redirigir al usuario a iniciar sesión nuevamente o manejar según tus necesidades
-      return new Observable(); // o lógica adicional según tus necesidades
+      return new Observable();
     }
   }
 
   private createAuthRequest(data: Curso, token: string, URL: string): HttpRequest<Curso> {
-    // Crea una nueva solicitud clonando la original y agregando el encabezado de autorización
     const authRequest = new HttpRequest<Curso>(
       'POST',
       URL,
@@ -84,13 +66,11 @@ export class CursoService {
         Authorization: `Bearer ${token}`,
       });
   
-      // Construir el cuerpo de la solicitud con el id
       const body = { id: id };
   
-      // Realizar la solicitud DELETE con el cuerpo y el encabezado de autorización
       return this.http.delete<void>(url, { headers: headers, body: body })
         .pipe(
-          tap(() => this.notifyCursoChange()) // Notificar cambio después de eliminar el curso
+          tap(() => this.notifyCursoChange())
         );
     } else {
       console.error('Token inválido o no presente.');
@@ -98,6 +78,20 @@ export class CursoService {
     }
   }
   
+  actualizarCurso(cursoDTO: Curso): Observable<any> {
+    console.log("Actualizado " , cursoDTO)
+    const token = this.tokenInterceptorService.getToken();
+    if (token && this.tokenInterceptorService.isTokenValid()) {
+      const authRequest = this.createAuthRequest(cursoDTO, token, this.URL + this.END_POINT_UPDATE);
+      return this.http.put(this.URL + this.END_POINT_UPDATE, cursoDTO, { headers: authRequest.headers })
+        .pipe(
+          tap(() => this.notifyCursoChange())
+        );
+    } else {
+      console.error('Token inválido o no presente.');
+      return new Observable();
+    }
+  }
 
   notifyCursoChange(): void {
     this.cursoChangeSubject.next(true);

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AppConfig } from '../shared/config';
 import { Observable } from 'rxjs';
 import { Experiencia } from '../dto/resumen/experiencia';
-import { TokenInterceptorService } from './token-interceptor.service'; // Ajusta la ruta según tu estructura de archivos
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,17 @@ export class ExperienciaService {
     if (token && this.tokenInterceptorService.isTokenValid()) {
       const authRequest = this.createAuthRequest(experiencia, token, `${this.URL}${this.END_POINT_ADD}`);
       return this.http.post(`${this.URL}${this.END_POINT_ADD}`, experiencia, { headers: authRequest.headers });
+    } else {
+      console.error('Token inválido o no presente.');
+      return new Observable();
+    }
+  }
+
+  actualizarExperiencia(experiencia: Experiencia): Observable<any> {
+    const token = this.tokenInterceptorService.getToken();
+    if (token && this.tokenInterceptorService.isTokenValid()) {
+      const authRequest = this.createAuthRequest(experiencia, token, `${this.URL}${this.END_POINT_UPDATE}`);
+      return this.http.put(`${this.URL}${this.END_POINT_UPDATE}`, experiencia, { headers: authRequest.headers });
     } else {
       console.error('Token inválido o no presente.');
       return new Observable();
