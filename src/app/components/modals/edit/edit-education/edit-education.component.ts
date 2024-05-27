@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Carrera } from 'src/app/dto/resumen/carrera';
 import { DatePipe } from '@angular/common';
+import { EstudioService } from 'src/app/service/estudio.service';
+import { EstudioDTO } from 'src/app/dto/about/estudioDTO';
 
 @Component({
   selector: 'app-edit-education',
@@ -20,7 +22,8 @@ export class EditEducationComponent implements OnInit {
     private fb: FormBuilder,
     private ref: DynamicDialogRef,
     private config: DynamicDialogConfig,
-    private datePipe: DatePipe  // Agrega DatePipe en el constructor
+    private datePipe: DatePipe,  // Agrega DatePipe en el constructor
+    private estudioService: EstudioService // Inyecta el servicio EstudioService
   ) {}
 
   ngOnInit(): void {
@@ -121,7 +124,16 @@ export class EditEducationComponent implements OnInit {
 
   guardarEstudio(): void {
     if (this.estudioForm.valid) {
-      // Aquí se debería realizar la lógica para guardar el estudio
+      const estudioDTO: EstudioDTO = this.estudioForm.value;
+      this.estudioService.actualizarEstudio(estudioDTO).subscribe({
+        next: response => {
+          console.log('Estudio actualizado correctamente:', response);
+          this.ref.close(response);
+        },
+        error: err => {
+          console.error('Error al actualizar el estudio:', err);
+        }
+      });
     }
   }
 

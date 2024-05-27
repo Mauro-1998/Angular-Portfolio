@@ -24,11 +24,13 @@
     </app-crud-buttons>
   </div>
   <div class="date-frame">
-    <h5>{{c.inicio | date:'yyyy'}} - {{c.fin == null ? 'Actualidad' : c.fin | date:'yyyy'}}</h5>
+    <h5>
+      {{c.inicio | date:'yyyy'}} - 
+      {{c.fin == null ? 'En curso' : c.finalizado ? (c.fin | date:'yyyy') + ' (Completada)' : (c.fin | date:'yyyy') + ' (Abandonada)'}}
+    </h5>
   </div>
   <p><em>{{c.facultad}}</em></p>
-  <p>
-    <ul *ngFor="let e of c.descripcion.split('\n')">
-      <li>{{e}}</li>
-    </ul>
+  <ul>
+    <li *ngFor="let e of c.descripcion.split('\n')">{{e}}</li>
+  </ul>
 </div>

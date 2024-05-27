@@ -72,4 +72,20 @@ export class EstudioService {
     );
     return authRequest;
   }
+
+
+  obtenerEstudios(): Observable<EstudioDTO[]> {
+    const token = this.tokenInterceptorService.getToken();
+    if (token && this.tokenInterceptorService.isTokenValid()) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.get<EstudioDTO[]>(`${this.URL}${this.END_POINT_GET}`, { headers: headers });
+    } else {
+      console.error('Token inválido o no presente.');
+      return new Observable<EstudioDTO[]>();
+    }
+  }
 }

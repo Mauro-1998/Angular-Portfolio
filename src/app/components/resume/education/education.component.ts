@@ -16,7 +16,7 @@ export class EducationComponent implements OnInit {
   
   @Input() carrera: Carrera[];
 
-  constructor(private tokenInterceptorService: TokenInterceptorService, private modalService: ModalService) { }
+  constructor(private tokenInterceptorService: TokenInterceptorService) { }
 
   ngOnInit(): void {
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
