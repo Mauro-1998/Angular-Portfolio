@@ -5,6 +5,7 @@ import { ResponseDTO } from 'src/app/dto/about/responseDTO';
 import { UserDTO } from 'src/app/dto/about/userDTO';
 import { AboutService } from 'src/app/service/about.service';
 import { TestimonialService } from 'src/app/service/testimonial.service';
+import { AppConfig } from 'src/app/shared/config';
 
 @Component({
   selector: 'app-about',
@@ -16,17 +17,18 @@ export class AboutComponent implements OnInit {
   user: ResponseDTO;
   aboutMe: UserDTO;
   referencias: Referencias[] = [];
+  private readonly userEmail =  `${AppConfig.user}`;
 
   constructor(
     private aboutService: AboutService,
     private testimonialService: TestimonialService // Inyectar TestimonialService
   ) {
-    const userEmail = 'molinamauro12@gmail.com';
-    this.loadUserData(userEmail);
+    
+    this.loadUserData(this.userEmail);
 
     // Suscribirse a los cambios en TestimonialService
     this.testimonialService.referenciaChanges$.subscribe(() => {
-      this.loadUserData(userEmail);
+      this.loadUserData(this.userEmail);
     });
   }
 

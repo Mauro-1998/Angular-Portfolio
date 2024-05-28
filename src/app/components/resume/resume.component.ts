@@ -9,6 +9,7 @@ import { Experiencia } from 'src/app/dto/resumen/experiencia';
 import { Curso } from 'src/app/dto/resumen/curso';
 import { CursoService } from 'src/app/service/curso.service';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
+import { AppConfig } from 'src/app/shared/config';
 
 @Component({
   selector: 'app-resume',
@@ -21,10 +22,11 @@ export class ResumeComponent implements OnInit {
   carreras: Carrera[];
   experiencias: Experiencia[];
   cursos: Curso[];
-  readonly email: string = "molinamauro12@gmail.com";
+  private readonly userEmail =  `${AppConfig.user}`;
+  
 
   constructor(private resumeService: ResumeService, private estudioService: EstudioService, private cursoService: CursoService, private experienciaService: ExperienciaService) { 
-    this.resumeService.getResume(this.email).subscribe((response: ResponseDTO): void => {
+    this.resumeService.getResume(this.userEmail).subscribe((response: ResponseDTO): void => {
       if (response) {
         this.carreras = response.carreras;
         this.experiencias = response.experiencias;
@@ -53,7 +55,7 @@ export class ResumeComponent implements OnInit {
   }
 
   private loadResume() {
-    this.resumeService.getResume(this.email).subscribe((response: ResponseDTO): void => {
+    this.resumeService.getResume(this.userEmail).subscribe((response: ResponseDTO): void => {
       if (response) {
         this.carreras = response.carreras;
         this.experiencias = response.experiencias;
