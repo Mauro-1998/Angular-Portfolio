@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';
 import { DatePipe } from '@angular/common';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
@@ -19,7 +19,8 @@ export class EditExperienceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private config: DynamicDialogConfig,
     private experienciaService: ExperienciaService,
-    private datePipe: DatePipe // Agrega DatePipe en el constructor
+    private datePipe: DatePipe, // Agrega DatePipe en el constructor
+    private ref: DynamicDialogRef
   ) {
     const today = new Date();
     this.maxFechaHoy = this.formatoFecha(today); // Formatea la fecha actual al inicializar el componente
@@ -102,5 +103,6 @@ export class EditExperienceComponent implements OnInit {
     } else {
       console.log('Formulario no válido.');
     }
+    this.ref.close();
   }
 }

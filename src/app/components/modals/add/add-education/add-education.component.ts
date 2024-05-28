@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { DatePipe } from '@angular/common';
 import { EstudioDTO } from 'src/app/dto/about/estudioDTO';
 import { EstudioService } from 'src/app/service/estudio.service';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-add-education',
@@ -15,7 +16,7 @@ export class AddEducationComponent implements OnInit {
   maxFechaInicio: string;
   maxFechaHoy: string;
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe, private estudioService: EstudioService) { }
+  constructor(private fb: FormBuilder, private datePipe: DatePipe, private estudioService: EstudioService, private ref: DynamicDialogRef) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -116,20 +117,7 @@ export class AddEducationComponent implements OnInit {
     fechaInicioControl.updateValueAndValidity();
     fechaFinControl.updateValueAndValidity();
 
-    if (!isFormValid) {
-      // Log de errores específicos por campo
-      if (fechaInicioControl.errors) {
-        console.log("Errores en 'inicio': ", fechaInicioControl.errors);
-      }
-
-      if (fechaFinControl.errors) {
-        console.log("Errores en 'fin': ", fechaFinControl.errors);
-      }
-
-      if (finalizadoControl.errors) {
-        console.log("Errores en 'finalizado': ", finalizadoControl.errors);
-      }
-    } else {
+    if (isFormValid) {
       console.log("FORMULARIO OK")
     }
 
@@ -155,6 +143,7 @@ export class AddEducationComponent implements OnInit {
     } else {
       // Manejo de errores si es necesario
     }
+    this.ref.close();
   }
 
   private validateFechaInicio(control: AbstractControl): { [key: string]: boolean } | null {

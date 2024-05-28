@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { TokenInterceptorService } from './token-interceptor.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { EstudioDTO } from '../dto/about/estudioDTO';
+import { TokenInterceptorService } from './token-interceptor.service';
 import { AppConfig } from '../shared/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EstudioService {
+  private resumeChangesSubject = new Subject<void>();
+
   readonly END_POINT_ADD = '/estudio/add';
   readonly END_POINT_DELETE = '/estudio/delete';
   readonly END_POINT_UPDATE = '/estudio/update';
@@ -18,13 +21,23 @@ export class EstudioService {
   constructor(
     private http: HttpClient,
     private tokenInterceptorService: TokenInterceptorService
-  ) {}
+  ) { }
+
+  get resumeChanges$(): Observable<void> {
+    return this.resumeChangesSubject.asObservable();
+  }
+
+  private notifyChanges(): void {
+    this.resumeChangesSubject.next();
+  }
 
   guardarEstudio(estudioDTO: EstudioDTO): Observable<any> {
     const token = this.tokenInterceptorService.getToken();
     if (token && this.tokenInterceptorService.isTokenValid()) {
       const authRequest = this.createAuthRequest(estudioDTO, token, `${this.URL}${this.END_POINT_ADD}`);
-      return this.http.post(`${this.URL}${this.END_POINT_ADD}`, estudioDTO, { headers: authRequest.headers });
+      return this.http.post(`${this.URL}${this.END_POINT_ADD}`, estudioDTO, { headers: authRequest.headers }).pipe(
+        tap(() => this.notifyChanges()) // Notifica cambios
+      );
     } else {
       console.error('Token inválido o no presente.');
       return new Observable();
@@ -35,7 +48,9 @@ export class EstudioService {
     const token = this.tokenInterceptorService.getToken();
     if (token && this.tokenInterceptorService.isTokenValid()) {
       const authRequest = this.createAuthRequest(estudioDTO, token, `${this.URL}${this.END_POINT_UPDATE}`);
-      return this.http.put(`${this.URL}${this.END_POINT_UPDATE}`, estudioDTO, { headers: authRequest.headers });
+      return this.http.put(`${this.URL}${this.END_POINT_UPDATE}`, estudioDTO, { headers: authRequest.headers }).pipe(
+        tap(() => this.notifyChanges()) // Notifica cambios
+      );
     } else {
       console.error('Token inválido o no presente.');
       return new Observable();
@@ -48,7 +63,9 @@ export class EstudioService {
       const url = `${this.URL}${this.END_POINT_DELETE}`;
       const body = { id: id };
       const authRequest = this.createAuthRequest(body as EstudioDTO, token, url);
-      return this.http.delete<void>(url, { headers: authRequest.headers, body: body });
+      return this.http.delete<void>(url, { headers: authRequest.headers, body: body }).pipe(
+        tap(() => this.notifyChanges()) // Notifica cambios
+      );
     } else {
       console.error('Token inválido o no presente.');
       return new Observable();

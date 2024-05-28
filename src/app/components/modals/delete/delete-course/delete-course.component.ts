@@ -13,7 +13,7 @@ export class DeleteCourseComponent implements OnInit {
   id: number; // Variable para almacenar el ID del curso a eliminar
 
   constructor(
-    public ref: DynamicDialogRef,
+    private ref: DynamicDialogRef,
     private config: DynamicDialogConfig,
     private cursoService: CursoService
   ) { }
@@ -34,7 +34,6 @@ export class DeleteCourseComponent implements OnInit {
       () => {
         console.log("ID CURSO: ", this.id)
         console.log('Curso eliminado');
-        this.ref.close();
       },
       (error: any) => { // Mantenemos el tipo de datos como 'any'
         console.log("ID CURSO: ", this.id)
@@ -42,5 +41,6 @@ export class DeleteCourseComponent implements OnInit {
         // Manejar el error según sea necesario
       }
     );
+    this.ref.close();
   }
 }

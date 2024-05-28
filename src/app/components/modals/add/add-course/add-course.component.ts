@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CursoService } from 'src/app/service/curso.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class AddCourseComponent implements OnInit {
   maxFechaHoy: string;
 
   constructor(private formBuilder: FormBuilder, 
-              private cursoService: CursoService
+              private cursoService: CursoService,
+              private ref: DynamicDialogRef
   ) {
     const hoy = new Date();
     this.maxFechaHoy = hoy.toISOString().split('T')[0];
@@ -119,5 +121,6 @@ export class AddCourseComponent implements OnInit {
     } else {
       console.log('El formulario no es válido. No se puede guardar el curso.');
     }
+    this.ref.close();
   }
 }

@@ -23,7 +23,7 @@ export class EditEducationComponent implements OnInit {
     private ref: DynamicDialogRef,
     private config: DynamicDialogConfig,
     private datePipe: DatePipe,  // Agrega DatePipe en el constructor
-    private estudioService: EstudioService // Inyecta el servicio EstudioService
+    private estudioService: EstudioService, // Inyecta el servicio EstudioService
   ) {}
 
   ngOnInit(): void {
@@ -135,6 +135,7 @@ export class EditEducationComponent implements OnInit {
         }
       });
     }
+    this.ref.close();
   }
 
   private validateFechaInicio(control: AbstractControl): { [key: string]: boolean } | null {

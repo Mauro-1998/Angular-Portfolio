@@ -17,7 +17,8 @@ export class EditCourseComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private config: DynamicDialogConfig,
-    private cursoService: CursoService 
+    private cursoService: CursoService,
+    private ref: DynamicDialogRef
   ) {}
 
   ngOnInit() {
@@ -69,6 +70,7 @@ export class EditCourseComponent implements OnInit {
         }
       );
     }
+    this.ref.close();
   }
 
   puedeGuardar() {

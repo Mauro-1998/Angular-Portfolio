@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Referencias } from 'src/app/dto/about/referencias';
 import { TestimonialService } from 'src/app/service/testimonial.service';
 
@@ -14,7 +14,7 @@ export class EditTestimonialsComponent implements OnInit {
   testimonialForm: FormGroup;
   urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
 
-  constructor(private fb: FormBuilder, private config: DynamicDialogConfig, private testimonialService: TestimonialService) {}
+  constructor(private fb: FormBuilder, private config: DynamicDialogConfig, private testimonialService: TestimonialService, private ref: DynamicDialogRef) {}
 
   ngOnInit(): void {
     this.referencia = this.config.data.entity;
@@ -46,6 +46,7 @@ export class EditTestimonialsComponent implements OnInit {
     } else {
       console.log('Formulario no válido.');
     }
+    this.ref.close();
   }
 
   puedeGuardar() {

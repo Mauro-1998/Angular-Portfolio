@@ -34,7 +34,6 @@ export class DeleteEducationComponent {
       () => {
         console.log("ID Estudio: ", this.id)
         console.log('Estudio eliminado');
-        this.ref.close();
       },
       (error: any) => { // Mantenemos el tipo de datos como 'any'
         console.log("ID Estudio: ", this.id)
@@ -42,6 +41,7 @@ export class DeleteEducationComponent {
         // Manejar el error según sea necesario
       }
     );
+    this.ref.close();
   }
 
 

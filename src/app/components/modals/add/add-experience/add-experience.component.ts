@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Experiencia } from 'src/app/dto/resumen/experiencia';// Ajusta la ruta según tu estructura de archivos
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 
@@ -13,7 +14,7 @@ export class AddExperienceComponent implements OnInit {
   experienceForm: FormGroup;
   maxFechaHoy: string;
 
-  constructor(private formBuilder: FormBuilder, private experienciaService: ExperienciaService) {
+  constructor(private formBuilder: FormBuilder, private experienciaService: ExperienciaService, private ref: DynamicDialogRef) {
     const today = new Date();
     this.maxFechaHoy = today.toISOString().split('T')[0];
   }
@@ -114,5 +115,6 @@ export class AddExperienceComponent implements OnInit {
     } else {
       console.log('Formulario no válido.');
     }
+    this.ref.close();
   }
 }

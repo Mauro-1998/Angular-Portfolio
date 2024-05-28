@@ -13,7 +13,7 @@ export class DeleteExperienceComponent {
 
   id: number; // Variable para almacenar el ID de la experiencia a eliminar
 
-  constructor(public ref: DynamicDialogRef, private config: DynamicDialogConfig, private experienciaService: ExperienciaService) { }
+  constructor(private ref: DynamicDialogRef, private config: DynamicDialogConfig, private experienciaService: ExperienciaService) { }
 
   ngOnInit(): void {
     // Recibir el ID del curso del parámetro 'data' pasado al abrir el diálogo
@@ -29,12 +29,12 @@ export class DeleteExperienceComponent {
     this.experienciaService.eliminarExperiencia(this.id).subscribe(
       () => {
         console.log("ID Experiencia: ", this.id)
-        this.ref.close();
       },
       (error: any) => { // Mantenemos el tipo de datos como 'any'
         console.error('Error al eliminar la experiencia', error);
         // Manejar el error según sea necesario
       }
     );
+    this.ref.close();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Referencias } from 'src/app/dto/about/referencias'; // Ajusta la ruta según tu estructura de archivos
 import { TestimonialService } from 'src/app/service/testimonial.service'; // Ajusta la ruta según tu estructura de archivos
 
@@ -14,7 +15,8 @@ export class AddTestimonialsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private testimonialService: TestimonialService
+    private testimonialService: TestimonialService,
+    private ref: DynamicDialogRef
   ) { }
 
   ngOnInit(): void {
@@ -48,5 +50,6 @@ export class AddTestimonialsComponent implements OnInit {
     } else {
       console.log('Formulario no válido.');
     }
+    this.ref.close();
   }
 }

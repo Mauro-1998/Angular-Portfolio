@@ -12,7 +12,7 @@ export class DeleteTestimonialComponent implements OnInit {
   id: number; // Variable para almacenar el ID del testimonio a eliminar
 
   constructor(
-    public ref: DynamicDialogRef,
+    private ref: DynamicDialogRef,
     private config: DynamicDialogConfig,
     private testimonialService: TestimonialService
   ) { }
@@ -31,12 +31,12 @@ export class DeleteTestimonialComponent implements OnInit {
     this.testimonialService.eliminarReferencia(this.id).subscribe(
       () => {
         console.log("ID Testimonio: ", this.id)
-        this.ref.close();
       },
       (error: any) => { // Mantenemos el tipo de datos como 'any'
         console.error('Error al eliminar el testimonio', error);
         // Manejar el error según sea necesario
       }
     );
+    this.ref.close();
   }
 }
