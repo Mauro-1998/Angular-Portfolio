@@ -34,8 +34,8 @@ export class ResumeComponent implements OnInit {
     delay.subscribe(() => {
       this.showClass = true;
     });
-
-
-   
+  
+    
+    
   }
 }

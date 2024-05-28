@@ -18,11 +18,6 @@ export class CrudButtonsComponent implements OnInit {
   @Input() componentType: 'education' | 'experience' | 'course' | 'testimonials';
   @Input() entity: any; // Nueva entrada para la entidad
 
-  @Output() editClicked = new EventEmitter<any>(); // Nuevo evento de salida
-
-
-
-
 
   buttonStyles = {
     base: {
@@ -78,8 +73,7 @@ export class CrudButtonsComponent implements OnInit {
   }
 
   editButtonClick() {
-    console.log('Edit Button Clicked: ', this.componentType, " entity: " + this.entity);
-    this.editClicked.emit(this.entity); // Emitir el evento con la entidad
+    console.log('Edit Button Clicked: ', this.componentType, " entity: " + JSON.stringify(this.entity));
     this.modalService.openEditModal(this.componentType, this.entity); // Abrir el modal con la entidad
   }
 

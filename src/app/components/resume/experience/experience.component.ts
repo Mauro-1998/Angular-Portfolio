@@ -22,17 +22,14 @@ export class ExperienceComponent implements OnInit {
   componentType: 'experience' = 'experience';
   
   
-  constructor(private tokenInterceptorService: TokenInterceptorService, resumeService: ResumeService) {
+  constructor(private tokenInterceptorService: TokenInterceptorService) {
     
   }
 
   ngOnInit(): void {
-    //console.log("EXPERIENCIAS: " + JSON.stringify(this.experiencias))
     if (this.tokenInterceptorService.hasToken() && this.tokenInterceptorService.isTokenValid) {
       this.isLoginOK = true;
-    } else {
-      //console.log('No hay token disponible. No se carga el componente.');
-    }
+    } 
   }
 
   

@@ -28,11 +28,9 @@ export class DeleteTestimonialComponent implements OnInit {
 
   confirm() {
     // Lógica para eliminar el testimonio utilizando el ID recibido
-    console.log("Vamos a eliminar el testimonio con ID: ", this.id)
     this.testimonialService.eliminarReferencia(this.id).subscribe(
       () => {
         console.log("ID Testimonio: ", this.id)
-        console.log('Testimonio eliminado');
         this.ref.close();
       },
       (error: any) => { // Mantenemos el tipo de datos como 'any'
