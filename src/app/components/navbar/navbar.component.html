@@ -5,5 +5,5 @@
       <a [ngClass]="e.selected ? 'nav-link active' : 'nav-link'" (click)="changeSelected(e)" routerLink="{{e.value}}">{{e.titulo}}</a>
     </li>
   </ul>
-  <i [ngClass]="iconMenu ? 'bi mobile-nav-toggle bi-x' :  'bi mobile-nav-toggle bi-list'" (click)="changeIconMenu()"></i>
+  <i [ngClass]="iconMenu ? 'bi mobile-nav-toggle bi-x' : 'bi mobile-nav-toggle bi-list'" (click)="changeIconMenu()"></i>
 </nav>
