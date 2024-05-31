@@ -1,13 +1,10 @@
 <section id="contact" class="contact" [ngClass]="showClass ? 'contact section-show' : 'contact'">
   <div class="container">
-
     <div class="section-title">
       <h2>Contact</h2>
       <p>Contactar conmigo</p>
     </div>
-
     <div class="row mt-2">
-
       <div class="col-md-6 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-map"></i>
@@ -15,7 +12,6 @@
           <p>Fader 1968, Guaymallen, Mendoza</p>
         </div>
       </div>
-
       <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-share-alt"></i>
@@ -27,7 +23,6 @@
           </div>
         </div>
       </div>
-
       <div class="col-md-6 mt-4 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-envelope"></i>
@@ -43,29 +38,40 @@
         </div>
       </div>
     </div>
-
-    <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm" class="php-email-form mt-4">
       <div class="row">
         <div class="col-md-6 form-group">
-          <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre" required>
+          <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre" formControlName="name">
+          <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched" class="error-message">
+            El nombre es requerido.
+          </div>
         </div>
         <div class="col-md-6 form-group mt-3 mt-md-0">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Tu Correo" required>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Tu Correo" formControlName="email">
+          <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched" class="error-message">
+            <div *ngIf="contactForm.get('email').errors?.['required']">El correo es requerido.</div>
+            <div *ngIf="contactForm.get('email').errors?.['email']">El correo no es válido.</div>
+          </div>
         </div>
       </div>
       <div class="form-group mt-3">
-        <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" formControlName="subject">
+        <div *ngIf="contactForm.get('subject').invalid && contactForm.get('subject').touched" class="error-message">
+          El asunto es requerido.
+        </div>
       </div>
       <div class="form-group mt-3">
-        <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+        <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" formControlName="message"></textarea>
+        <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched" class="error-message">
+          El mensaje es requerido.
+        </div>
       </div>
       <div class="my-3">
         <div class="loading">Cargando</div>
-        <div class="error-message">Algo falló al enviar el correo, contacteme por otro medio :(</div>
-        <div class="sent-message">Su mensaje ha sido enviado. ¡Gracias!</div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="sentMessage" class="sent-message">{{ sentMessage }}</div>
       </div>
-      <div class="text-center"><button type="submit">Enviar</button></div>
+      <div class="text-center"><button type="submit" [disabled]="contactForm.invalid">Enviar</button></div>
     </form>
-
   </div>
-</section><!-- End Contact Section -->
+</section>

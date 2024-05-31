@@ -5,7 +5,7 @@
                 <label for="nombre">Nombre</label>
                 <input id="nombre" type="text" formControlName="nombre" class="form-control" />
                 <small *ngIf="testimonialForm.get('nombre').hasError('required')" class="p-error">Debe indicar el
-                    nombre</small>
+                    nombre<br></small>
             </div>
         </div>
         <div class="col-md-6">
@@ -13,9 +13,9 @@
                 <label for="urlFoto">URL de la Foto</label>
                 <input id="urlFoto" type="text" formControlName="urlFoto" class="form-control" />
                 <small *ngIf="testimonialForm.get('urlFoto').hasError('required')" class="p-error">Debe ingresar la URL
-                    de la foto</small>
+                    de la foto<br></small>
                 <small *ngIf="testimonialForm.get('urlFoto').hasError('pattern')" class="p-error">Debe ingresar una URL
-                    valida (ftp, http, https)</small>
+                    valida (ftp, http, https)<br></small>
             </div>
         </div>
         <div class="col-md-12">
@@ -23,11 +23,11 @@
                 <label for="descripcion">Descripcion</label>
                 <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
                 <small *ngIf="testimonialForm.get('descripcion').hasError('required')" class="p-error">Debe agregar una
-                    descripción</small>
+                    descripcion<br></small>
                 <small *ngIf="testimonialForm.get('descripcion').hasError('minlength')" class="p-error">La descripcion
-                    debe tener al menos 1 caracter</small>
+                    debe tener al menos 1 caracter<br></small>
                 <small *ngIf="testimonialForm.get('descripcion').hasError('maxlength')" class="p-error">La descripcion
-                    no puede tener más de 500 caracteres</small>
+                    no puede tener más de 500 caracteres<br></small>
             </div>
         </div>
         <div class="col-md-6">
@@ -35,7 +35,7 @@
                 <label for="puesto">Puesto</label>
                 <input id="puesto" type="text" formControlName="puesto" class="form-control" />
                 <small *ngIf="testimonialForm.get('puesto').hasError('required')" class="p-error">Debe indicar el
-                    puesto</small>
+                    puesto<br></small>
             </div>
         </div>
         <br>

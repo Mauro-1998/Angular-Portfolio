@@ -6,7 +6,7 @@
         <label for="nombre">Nombre de la carrera</label>
         <input id="nombre" type="text" pInputText formControlName="nombre" class="form-control" />
         <small *ngIf="estudioForm.get('nombre').hasError('required')" class="p-error">Debe indicar el nombre de la
-          carrera</small>
+          carrera<br></small>
       </div>
     </div>
     <div class="col-md-6">
@@ -14,7 +14,7 @@
         <label for="facultad">Nombre de la institución</label>
         <input id="facultad" type="text" pInputText formControlName="facultad" class="form-control" />
         <small *ngIf="estudioForm.get('facultad').hasError('required')" class="p-error">Debe indicar el nombre de la
-          institución</small>
+          institución<br></small>
       </div>
     </div>
 
@@ -24,11 +24,11 @@
         <label for="descripcion">Descripcion</label>
         <textarea id="descripcion" pInputTextarea formControlName="descripcion" class="form-control"></textarea>
         <small *ngIf="estudioForm.get('descripcion').hasError('required')" class="p-error">Debe agregar una
-          descripcion</small>
+          descripcion<br></small>
         <small *ngIf="estudioForm.get('descripcion').hasError('minlength')" class="p-error">La descripcion debe tener al
-          menos 1 caracter</small>
+          menos 1 caracter<br></small>
         <small *ngIf="estudioForm.get('descripcion').hasError('maxlength')" class="p-error">La descripcion no puede
-          tener más de 500 caracteres</small>
+          tener más de 500 caracteres<br></small>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
         <input id="inicio" type="date" pInputText formControlName="inicio" [max]="maxFechaInicio"
           class="form-control" />
         <small *ngIf="estudioForm.get('inicio').hasError('required')" class="p-error">Debe indicar la fecha de
-          inicio</small>
+          inicio<br></small>
       </div>
     </div>
     <div class="col-md-6">
@@ -47,12 +47,12 @@
         <input id="fin" type="date" pInputText formControlName="fin" class="form-control" [max]="maxFechaHoy"
           [min]="estudioForm.get('inicio').value" />
         <div *ngIf="estudioForm.get('fin').hasError('fechasIncorrectas')" class="p-error">
-          La fecha de fin debe ser posterior o igual a la de inicio
+          La fecha de fin debe ser posterior o igual a la de inicio<br>
         </div>
         <div
           *ngIf="estudioForm.get('fin').hasError('fechasIncorrectasFinalizado') && estudioForm.get('finalizado').value"
           class="p-error">
-          La fecha de fin no puede ser posterior a la de hoy si el estudio está finalizado
+          La fecha de fin no puede ser posterior a la de hoy si el estudio está finalizado<br>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <small
           *ngIf="estudioForm.get('fin').hasError('fechasIncorrectasFinalizado') && estudioForm.get('finalizado').value"
           class="p-error">
-          La fecha de fin no puede ser posterior a la de hoy si el estudio está finalizado
+          La fecha de fin no puede ser posterior a la de hoy si el estudio está finalizado<br>
         </small>
       </div>
     </div>

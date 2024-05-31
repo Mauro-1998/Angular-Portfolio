@@ -6,7 +6,7 @@
         <label for="nombre">Nombre del curso</label>
         <input id="nombre" type="text" formControlName="nombre" class="form-control" />
         <small *ngIf="cursoForm.get('nombre').hasError('required')" class="p-error">Debe indicar el nombre del
-          curso</small>
+          curso<br></small>
       </div>
     </div>
     <div class="col-md-6">
@@ -14,9 +14,9 @@
         <label for="certificado">URL del certificado</label>
         <input id="certificado" type="text" formControlName="certificado" class="form-control" />
         <small *ngIf="cursoForm.get('certificado').hasError('required')" class="p-error">Debe ingresar la URL del
-          certificado</small>
+          certificado<br></small>
         <small *ngIf="cursoForm.get('certificado').hasError('pattern')" class="p-error">Debe ingresar una URL
-          valida</small>
+          valida<br></small>
       </div>
     </div>
 
@@ -26,11 +26,11 @@
         <label for="descripcion">Descripcion</label>
         <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
         <small *ngIf="cursoForm.get('descripcion').hasError('required')" class="p-error">Debe agregar una
-          descripcion</small>
+          descripcion<br></small>
         <small *ngIf="cursoForm.get('descripcion').hasError('minlength')" class="p-error">La descripcion debe tener al
-          menos 1 caracter</small>
+          menos 1 caracter<br></small>
         <small *ngIf="cursoForm.get('descripcion').hasError('maxlength')" class="p-error">La descripcion no puede tener
-          más de 500 caracteres</small>
+          más de 500 caracteres<br></small>
       </div>
     </div>
 
@@ -40,9 +40,9 @@
         <label for="inicio">Fecha de inicio</label>
         <input id="inicio" type="date" formControlName="inicio" class="form-control" [max]="maxFechaHoy" />
         <small *ngIf="cursoForm.get('inicio').hasError('required')" class="p-error">Debe indicar la fecha de
-          inicio</small>
+          inicio<br></small>
         <small *ngIf="cursoForm.get('inicio').hasError('pastOrPresent')" class="p-error">La fecha de inicio debe ser
-          anterior o igual a hoy</small>
+          anterior o igual a hoy<br></small>
       </div>
     </div>
     <div class="col-md-6">
@@ -51,11 +51,11 @@
         <input id="fin" type="date" formControlName="fin" class="form-control" [min]="cursoForm.get('inicio').value" />
         <small *ngIf="cursoForm.get('fin').hasError('required')" class="p-error">Debe indicar la fecha de fin</small>
         <small *ngIf="cursoForm.get('fin').hasError('endDateInvalid')" class="p-error">La fecha de fin no puede ser
-          posterior a hoy si el curso esta finalizado</small>
+          posterior a hoy si el curso esta finalizado<br></small>
         <small *ngIf="cursoForm.get('fin').hasError('endDateNotAllowed')" class="p-error">La fecha de fin no esta
-          permitida si el curso no esta finalizado</small>
+          permitida si el curso no esta finalizado<br></small>
         <small *ngIf="cursoForm.get('fin').hasError('endDateBeforeStartDate')" class="p-error">La fecha de fin no puede
-          ser anterior a la fecha de inicio</small>
+          ser anterior a la fecha de inicio<br></small>
       </div>
     </div>
 
@@ -65,7 +65,7 @@
         <label for="finalizado">Finalizado</label>
         <input id="finalizado" type="checkbox" formControlName="finalizado" class="form-check-input" />
         <small *ngIf="cursoForm.get('finalizado').value && cursoForm.get('fin').hasError('endDateInvalid')"
-          class="p-error">La fecha de fin no puede ser posterior a hoy si el curso esta finalizado</small>
+          class="p-error">La fecha de fin no puede ser posterior a hoy si el curso esta finalizado<br></small>
       </div>
     </div>
 

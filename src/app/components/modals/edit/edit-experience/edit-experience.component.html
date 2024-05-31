@@ -5,9 +5,9 @@
         <div class="form-group">
           <label for="empresa">Empresa</label>
           <input id="empresa" type="text" formControlName="empresa" class="form-control" />
-          <small *ngIf="experienceForm.get('empresa').hasError('required')" class="text-danger">Empresa no debe ser nula</small>
-          <small *ngIf="experienceForm.get('empresa').hasError('minlength')" class="text-danger">Empresa debe tener al menos 1 caracter</small>
-          <small *ngIf="experienceForm.get('empresa').hasError('maxlength')" class="text-danger">Empresa debe tener como máximo 45 caracteres</small>
+          <small *ngIf="experienceForm.get('empresa').hasError('required')" class="text-danger">Empresa no debe ser nula<br></small>
+          <small *ngIf="experienceForm.get('empresa').hasError('minlength')" class="text-danger">Empresa debe tener al menos 1 caracter<br></small>
+          <small *ngIf="experienceForm.get('empresa').hasError('maxlength')" class="text-danger">Empresa debe tener como máximo 45 caracteres<br></small>
         </div>
       </div>
       <!-- Puesto -->
@@ -15,9 +15,9 @@
         <div class="form-group">
           <label for="puesto">Puesto</label>
           <input id="puesto" type="text" formControlName="puesto" class="form-control" />
-          <small *ngIf="experienceForm.get('puesto').hasError('required')" class="text-danger">Puesto no debe ser nulo</small>
-          <small *ngIf="experienceForm.get('puesto').hasError('minlength')" class="text-danger">Puesto debe tener al menos 1 caracter</small>
-          <small *ngIf="experienceForm.get('puesto').hasError('maxlength')" class="text-danger">Puesto debe tener como máximo 45 caracteres</small>
+          <small *ngIf="experienceForm.get('puesto').hasError('required')" class="text-danger">Puesto no debe ser nulo<br></small>
+          <small *ngIf="experienceForm.get('puesto').hasError('minlength')" class="text-danger">Puesto debe tener al menos 1 caracter<br></small>
+          <small *ngIf="experienceForm.get('puesto').hasError('maxlength')" class="text-danger">Puesto debe tener como máximo 45 caracteres<br></small>
         </div>
       </div>
       <!-- Descripción -->
@@ -25,9 +25,9 @@
         <div class="form-group">
           <label for="descripcion">Descripcion</label>
           <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
-          <small *ngIf="experienceForm.get('descripcion').hasError('required')" class="text-danger">Descripcion no debe ser nula</small>
-          <small *ngIf="experienceForm.get('descripcion').hasError('minlength')" class="text-danger">Descripcion debe tener al menos 1 caracter</small>
-          <small *ngIf="experienceForm.get('descripcion').hasError('maxlength')" class="text-danger">Descripcion debe tener como máximo 500 caracteres</small>
+          <small *ngIf="experienceForm.get('descripcion').hasError('required')" class="text-danger">Descripcion no debe ser nula<br></small>
+          <small *ngIf="experienceForm.get('descripcion').hasError('minlength')" class="text-danger">Descripcion debe tener al menos 1 caracter<br></small>
+          <small *ngIf="experienceForm.get('descripcion').hasError('maxlength')" class="text-danger">Descripcion debe tener como máximo 500 caracteres<br></small>
         </div>
       </div>
       <!-- Fecha de inicio -->
@@ -35,7 +35,7 @@
         <div class="form-group">
           <label for="inicio">Fecha de inicio</label>
           <input id="inicio" type="date" formControlName="inicio" class="form-control" [max]="maxFechaHoy" />
-          <small *ngIf="experienceForm.get('inicio').hasError('required')" class="text-danger">Debe indicar la fecha de inicio</small>
+          <small *ngIf="experienceForm.get('inicio').hasError('required')" class="text-danger">Debe indicar la fecha de inicio<br></small>
         </div>
       </div>
       <!-- Fecha de fin -->
@@ -43,7 +43,7 @@
         <div class="form-group">
           <label for="fin">Fecha de fin</label>
           <input id="fin" type="date" formControlName="fin" class="form-control" [max]="maxFechaHoy" />
-          <small *ngIf="experienceForm.get('fin').hasError('required')" class="text-danger">Debe indicar la fecha de fin</small>
+          <small *ngIf="experienceForm.get('fin').hasError('required')" class="text-danger">Debe indicar la fecha de fin<br></small>
         </div>
       </div>
       <!-- Actual -->
